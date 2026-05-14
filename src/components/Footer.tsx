@@ -2,66 +2,70 @@ import type { FC } from 'react';
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="pt-20 pb-10 bg-black border-t border-white/5">
+    <footer id="contact" className="pt-24 pb-12 bg-bg border-t border-white/10 relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
+      
       <div className="container">
-        <div className="flex flex-col md:flex-row justify-between gap-12 mb-20">
-          <div className="max-w-sm">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-black font-black text-sm">O</span>
+        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20">
+          <div className="max-w-md">
+            <a href="#" className="flex items-center gap-3 mb-6 no-underline group">
+              <img 
+                src="/logo.png" 
+                alt="ONE PRODUCTION" 
+                className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_15px_rgba(0,255,102,0.3)]"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="w-9 h-9 bg-primary hidden items-center justify-center rounded-xl shadow-[0_0_20px_rgba(0,255,102,0.3)]">
+                <span className="text-black font-black text-base">O</span>
               </div>
-              <span className="brand text-lg font-bold tracking-tighter uppercase">
+              <span className="brand text-xl font-extrabold tracking-tight uppercase text-white">
                 One <span className="text-primary">Production</span>
               </span>
-            </div>
-            <p className="text-text-dim leading-relaxed mb-8">
+            </a>
+            <p className="text-text-dim text-base leading-relaxed mb-8">
               「システムで、ビジネスを加速する。」<br />
               最新のテクノロジーと確かな戦略で、お客様のビジネスのDX化と効率化をサポートします。
             </p>
+            <div className="flex gap-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-text-dim bg-white/5 px-3 py-1 rounded-full border border-white/5">TECH PARTNER</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">TOKYO, JAPAN</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-12 md:gap-24">
+          <div className="grid grid-cols-2 gap-12 sm:gap-20">
             <div>
-              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Menu</h4>
-              <ul className="space-y-4">
-                <li><a href="#" className="text-text-dim hover:text-primary text-sm transition-colors">Home</a></li>
-                <li><a href="#services" className="text-text-dim hover:text-primary text-sm transition-colors">Services</a></li>
-                <li><a href="#about" className="text-text-dim hover:text-primary text-sm transition-colors">About</a></li>
-                <li><a href="#contact" className="text-text-dim hover:text-primary text-sm transition-colors">Contact</a></li>
+              <h4 className="text-white font-extrabold mb-6 text-xs uppercase tracking-widest text-primary">Navigation</h4>
+              <ul className="flex flex-col gap-3 list-none">
+                <li><a href="#" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Home</a></li>
+                <li><a href="#services" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Services</a></li>
+                <li><a href="#about" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">About</a></li>
+                <li><a href="#contact" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Contact</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Contact</h4>
-              <ul className="space-y-4">
-                <li className="text-text-dim text-sm">info@oneproduction.com</li>
-                <li className="text-text-dim text-sm">03-xxxx-xxxx</li>
-                <li className="text-text-dim text-sm">Tokyo, Japan</li>
+              <h4 className="text-white font-extrabold mb-6 text-xs uppercase tracking-widest text-primary">Inquiries</h4>
+              <ul className="flex flex-col gap-3 list-none">
+                <li className="text-text-dim text-sm font-medium select-all hover:text-white transition-colors cursor-pointer">info@oneproduction.com</li>
+                <li className="text-text-dim text-sm font-medium select-all hover:text-white transition-colors cursor-pointer">03-xxxx-xxxx</li>
+                <li className="text-text-dim text-sm font-medium">Tokyo, Japan</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-text-dim text-xs">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-text-dim text-xs font-medium">
             © 2026 ONE PRODUCTION Inc. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-text-dim hover:text-white text-xs transition-colors">Privacy Policy</a>
-            <a href="#" className="text-text-dim hover:text-white text-xs transition-colors">Terms of Service</a>
+          <div className="flex gap-8">
+            <a href="#" className="text-text-dim hover:text-white text-xs font-medium transition-colors no-underline">Privacy Policy</a>
+            <a href="#" className="text-text-dim hover:text-white text-xs font-medium transition-colors no-underline">Terms of Service</a>
           </div>
         </div>
       </div>
-
-      <style>{`
-        .pb-10 { padding-bottom: 2.5rem; }
-        .max-w-sm { max-width: 24rem; }
-        .mb-20 { margin-bottom: 5rem; }
-        .tracking-widest { letter-spacing: 0.1em; }
-        .space-y-4 > * + * { margin-top: 1rem; }
-        .text-xs { font-size: 0.75rem; }
-        .gap-24 { gap: 6rem; }
-        .pt-8 { padding-top: 2rem; }
-      `}</style>
     </footer>
   );
 };

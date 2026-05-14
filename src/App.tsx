@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 function App() {
   return (
@@ -16,33 +16,48 @@ function App() {
         <Services />
 
         {/* About Section */}
-        <section id="about" className="section-padding relative overflow-hidden bg-[#030303]">
+        <section id="about" className="section-padding relative overflow-hidden bg-bg">
           <div className="container">
-            <div className="flex flex-col md:flex-row items-center gap-20">
+            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
               <motion.div 
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="flex-1"
               >
-                <div className="section-tag">OUR MISSION</div>
-                <h2 className="text-4xl md:text-5xl font-black mb-8 tracking-tighter">
-                  ビジネスの可能性を<br /><span className="text-primary">最大限に引き出す</span>
+                <div className="section-tag inline-block uppercase font-black text-xs text-primary tracking-widest bg-primary/10 px-4 py-1.5 rounded-full mb-6 border border-primary/20">
+                  OUR MISSION
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-black mb-8 tracking-tight text-white leading-tight">
+                  ビジネスの可能性を<br /><span className="text-gradient-primary font-black">最大限に引き出す</span>
                 </h2>
                 <p className="text-lg text-text-dim leading-relaxed mb-6">
-                  ONE PRODUCTIONは、単なるシステム開発会社ではありません。私たちは、お客様のビジネスに深く入り込み、共に課題を解決するパートナーです。
+                  ONE PRODUCTIONは、単なるシステム開発会社ではありません。現場のリアルな声に耳を傾け、お客様のビジネス課題を根本から解決するパートナーです。
                 </p>
-                <p className="text-lg text-text-dim leading-relaxed mb-10">
-                  「システム」を目的とするのではなく、あくまでビジネスを「加速」させるための手段として捉え、最適な技術選定と戦略的なアプローチを提供します。
+                <p className="text-lg text-text-dim leading-relaxed mb-12">
+                  実際の事例として、飲食店の業務効率化プロジェクトにおいて、専用アプリの導入により在庫管理・発注業務の時間を75%削減。発注ミスをゼロにする確かな実績を達成しました。
                 </p>
-                <div className="flex gap-16">
-                  <div>
-                    <span className="block text-4xl font-black text-white mb-1">98%</span>
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Satisfaction</span>
+                
+                {/* Big Numbers (Social Proof) */}
+                <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-all duration-300">
+                    <span className="block text-5xl font-black text-white mb-2 tracking-tight group-hover:text-primary transition-colors">75%</span>
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-text-dim uppercase tracking-wider">
+                      <CheckCircle2 size={14} className="text-primary" />
+                      Time Reduction
+                    </div>
+                    <span className="block text-xs text-text-dim mt-2">在庫管理・発注業務の時間を劇的に削減</span>
+                    <div className="absolute -right-10 -bottom-10 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-all"></div>
                   </div>
-                  <div>
-                    <span className="block text-4xl font-black text-white mb-1">150+</span>
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Projects</span>
+                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-cyan/30 transition-all duration-300">
+                    <span className="block text-5xl font-black text-white mb-2 tracking-tight group-hover:text-cyan transition-colors">ZERO</span>
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-text-dim uppercase tracking-wider">
+                      <CheckCircle2 size={14} className="text-cyan" />
+                      Order Errors
+                    </div>
+                    <span className="block text-xs text-text-dim mt-2">アナログな発注ミスやトラブルを完全ゼロへ</span>
+                    <div className="absolute -right-10 -bottom-10 w-24 h-24 bg-cyan/10 rounded-full blur-xl group-hover:bg-cyan/20 transition-all"></div>
                   </div>
                 </div>
               </motion.div>
@@ -51,15 +66,19 @@ function App() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="flex-1 relative"
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="flex-1 relative w-full flex justify-center"
               >
-                <div className="about-image-wrapper">
-                  <div className="about-image-inner">
-                    <div className="text-primary opacity-10 font-black text-[12rem] select-none transform -rotate-12">
-                      DX
-                    </div>
+                <div className="about-image-wrapper w-full max-w-lg aspect-square rounded-[40px] border border-white/10 bg-surface flex items-center justify-center relative overflow-hidden shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-cyan/10 opacity-50"></div>
+                  <div className="about-image-inner text-primary opacity-15 font-black text-[12rem] lg:text-[14rem] select-none transform -rotate-12 tracking-tighter filter drop-shadow-[0_0_50px_rgba(0,255,102,0.5)]">
+                    DX
                   </div>
-                  <div className="glow-orb"></div>
+                  <div className="glow-orb absolute w-72 h-72 bg-primary/20 rounded-full blur-3xl -top-10 -right-10 pointer-events-none"></div>
+                  <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 text-center">
+                    <span className="text-xs uppercase font-extrabold tracking-widest text-primary block mb-1">ACCELERATION HUB</span>
+                    <span className="text-sm text-text-dim font-medium">最新のテクノロジーと確かな戦略でビジネスを牽引</span>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -67,139 +86,39 @@ function App() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding">
-          <div className="container">
+        <section className="section-padding bg-surface relative overflow-hidden">
+          <div className="absolute inset-0 grid-pattern opacity-50"></div>
+          <div className="container relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="cta-card"
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="cta-card p-12 lg:p-20 rounded-[40px] bg-black border border-white/10 relative overflow-hidden text-center shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
             >
-              <div className="cta-content">
-                <h2 className="cta-title">
-                  READY TO <span className="text-primary">ACCELERATE?</span>
+              <div className="cta-glow absolute w-96 h-96 bg-primary/20 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+              
+              <div className="relative z-10 max-w-3xl mx-auto">
+                <span className="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full inline-block mb-8 border border-primary/20">
+                  LET'S BUILD TOGETHER
+                </span>
+                <h2 className="cta-title text-4xl lg:text-6xl font-black mb-6 tracking-tight text-white leading-tight">
+                  READY TO <span className="text-gradient-primary font-black">ACCELERATE?</span>
                 </h2>
-                <p className="cta-description">
-                  あなたのビジネスに最適なシステムを。まずは無料相談から始めましょう。
+                <p className="cta-description text-lg lg:text-xl text-text-dim mb-10 leading-relaxed max-w-2xl mx-auto">
+                  あなたのビジネスに最適なシステムを。最新のテクノロジースタックで、競争優位性を生み出す開発を始めましょう。
                 </p>
-                <button className="btn btn-primary btn-lg">
+                <a href="#contact" className="btn btn-primary btn-lg no-underline text-lg font-bold px-10 py-5">
                   お問い合わせはこちら
-                  <ArrowRight size={20} />
-                </button>
+                  <ArrowRight size={22} className="transition-transform group-hover:translate-x-1" />
+                </a>
               </div>
-              <div className="cta-glow"></div>
             </motion.div>
           </div>
         </section>
       </main>
 
       <Footer />
-
-      <style>{`
-        .section-tag {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: var(--primary);
-          letter-spacing: 0.2em;
-          margin-bottom: 1.5rem;
-        }
-        .text-4xl { font-size: 2.5rem; }
-        .text-5xl { font-size: 3.5rem; }
-        .font-black { font-weight: 900; }
-        .tracking-tighter { letter-spacing: -0.04em; }
-        .mb-8 { margin-bottom: 2rem; }
-        .mb-10 { margin-bottom: 2.5rem; }
-        .flex-1 { flex: 1; }
-        .gap-20 { gap: 5rem; }
-        .gap-16 { gap: 4rem; }
-        
-        .about-image-wrapper {
-          position: relative;
-          aspect-ratio: 1;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-
-        .about-image-inner {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: radial-gradient(circle at center, rgba(0, 255, 102, 0.05) 0%, transparent 70%);
-        }
-
-        .glow-orb {
-          position: absolute;
-          width: 200px;
-          height: 200px;
-          background: var(--primary);
-          filter: blur(100px);
-          opacity: 0.1;
-          top: -50px;
-          right: -50px;
-        }
-
-        .cta-card {
-          padding: 6rem 4rem;
-          background: #0a0a0a;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 48px;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .cta-title {
-          font-size: clamp(2.5rem, 6vw, 4.5rem);
-          font-weight: 900;
-          line-height: 1.1;
-          margin-bottom: 2rem;
-          letter-spacing: -0.04em;
-        }
-
-        .cta-description {
-          font-size: 1.25rem;
-          color: var(--text-dim);
-          margin-bottom: 3rem;
-          max-width: 600px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .btn-lg {
-          padding: 1.25rem 3rem;
-          font-size: 1.125rem;
-          border-radius: 16px;
-        }
-
-        .cta-glow {
-          position: absolute;
-          width: 400px;
-          height: 400px;
-          background: var(--primary);
-          filter: blur(150px);
-          opacity: 0.05;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-        }
-
-        .app {
-          min-height: 100vh;
-        }
-
-        @media (max-width: 768px) {
-          .cta-card { padding: 4rem 2rem; }
-          .gap-20 { gap: 3rem; }
-        }
-      `}</style>
     </div>
   );
 }

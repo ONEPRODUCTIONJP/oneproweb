@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronRight, Sparkles } from 'lucide-react';
 
 const Hero: FC = () => {
   return (
@@ -13,48 +13,51 @@ const Hero: FC = () => {
       <div className="container">
         <div className="hero-content">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="hero-badge"
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-badge-wrapper"
           >
-            <span className="badge-dot"></span>
-            <span className="badge-text">BUSINESS ACCELERATION</span>
+            <div className="hero-badge">
+              <span className="badge-dot"></span>
+              <span className="badge-text font-bold">NEXT GEN BUSINESS ACCELERATION</span>
+              <Sparkles size={14} className="text-primary ml-1 animate-pulse" />
+            </div>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="hero-title"
+            transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-title font-black"
           >
             システムで、<br />
-            <span className="gradient-text">ビジネスを加速する。</span>
+            <span className="text-gradient-primary">ビジネスを加速する。</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="hero-description"
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-description text-text-dim"
           >
-            私たちは最新のテクノロジーを活用し、業務効率化とDX推進のパートナーとして、あなたのビジネスを次なるステージへと導きます。
+            現場のリアルな課題に寄り添い、圧倒的な業務効率化を実現するアプリ開発スタジオ。発注・在庫管理の時間を劇的に削減し、ミスをなくす確かなシステムを提供します。
           </motion.p>
           
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hero-buttons"
+            transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="hero-buttons flex items-center gap-6"
           >
-            <button className="btn btn-primary">
+            <a href="#services" className="btn btn-primary no-underline text-base font-bold">
               サービスを見る
-              <ArrowRight size={18} />
-            </button>
-            <button className="btn btn-secondary">
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </a>
+            <a href="#about" className="btn btn-secondary no-underline text-base font-bold">
               会社概要
               <ChevronRight size={18} />
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>
@@ -65,125 +68,131 @@ const Hero: FC = () => {
           min-height: 100vh;
           display: flex;
           align-items: center;
-          padding-top: 80px;
+          padding-top: 120px;
+          padding-bottom: 80px;
           overflow: hidden;
         }
 
         .hero-content {
-          max-width: 800px;
+          max-width: 900px;
           position: relative;
           z-index: 10;
+        }
+
+        .hero-badge-wrapper {
+          margin-bottom: 2.5rem;
         }
 
         .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.75rem;
-          padding: 0.5rem 1rem;
-          background: rgba(255, 255, 255, 0.05);
+          padding: 0.5rem 1.25rem;
+          background: rgba(255, 255, 255, 0.03);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 100px;
-          margin-bottom: 2.5rem;
+          backdrop-filter: blur(20px);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        .hero-badge:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(0, 255, 102, 0.3);
+          transform: translateY(-2px);
         }
 
         .badge-dot {
-          width: 6px;
-          height: 6px;
+          width: 8px;
+          height: 8px;
           background: var(--primary);
           border-radius: 50%;
-          box-shadow: 0 0 10px var(--primary);
-          animation: pulse 2s infinite;
+          box-shadow: 0 0 12px var(--primary);
+          animation: pulse-glow 2s infinite;
         }
 
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.5); opacity: 0.5; }
-          100% { transform: scale(1); opacity: 1; }
+        @keyframes pulse-glow {
+          0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 12px var(--primary); }
+          50% { transform: scale(1.3); opacity: 0.6; box-shadow: 0 0 20px var(--primary); }
         }
 
         .badge-text {
           font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.15em;
           color: var(--text-dim);
           text-transform: uppercase;
         }
 
         .hero-title {
-          font-size: clamp(3rem, 8vw, 5.5rem);
-          font-weight: 900;
-          line-height: 1.1;
-          margin-bottom: 2rem;
+          font-size: clamp(3.2rem, 8.5vw, 6.2rem);
+          line-height: 1.05;
+          margin-bottom: 2.5rem;
           letter-spacing: -0.04em;
         }
 
-        .gradient-text {
-          background: linear-gradient(135deg, var(--primary) 0%, #00ffaa 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
         .hero-description {
-          font-size: clamp(1.125rem, 2vw, 1.375rem);
-          color: var(--text-dim);
-          margin-bottom: 3.5rem;
-          max-width: 600px;
-          line-height: 1.7;
-        }
-
-        .hero-buttons {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.25rem;
+          font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+          margin-bottom: 4rem;
+          max-width: 650px;
+          line-height: 1.75;
         }
 
         /* Background Effects */
         .bg-glow {
           position: absolute;
           border-radius: 50%;
-          filter: blur(120px);
+          filter: blur(140px);
           pointer-events: none;
           z-index: 0;
+          animation: float-glow 10s ease-in-out infinite alternate;
         }
 
         .bg-glow-1 {
-          width: 600px;
-          height: 600px;
-          background: rgba(0, 255, 102, 0.05);
-          top: -100px;
+          width: 700px;
+          height: 700px;
+          background: rgba(0, 255, 102, 0.07);
+          top: -150px;
           right: -100px;
         }
 
         .bg-glow-2 {
-          width: 500px;
-          height: 500px;
-          background: rgba(0, 204, 255, 0.03);
-          bottom: -100px;
+          width: 600px;
+          height: 600px;
+          background: rgba(0, 204, 255, 0.05);
+          bottom: -150px;
           left: -100px;
+          animation-delay: -5s;
+        }
+
+        @keyframes float-glow {
+          0% { transform: translate(0, 0) scale(1); }
+          100% { transform: translate(-30px, 30px) scale(1.1); }
         }
 
         .grid-pattern {
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-          background-size: 40px 40px;
-          mask-image: radial-gradient(circle at 50% 50%, black, transparent);
+          background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+          background-size: 45px 45px;
+          mask-image: radial-gradient(circle at 40% 40%, black 10%, transparent 80%);
           z-index: 1;
         }
 
         @media (max-width: 768px) {
           .hero-section {
-            padding-top: 60px;
+            padding-top: 100px;
             text-align: center;
           }
           .hero-content {
             margin: 0 auto;
-          }
-          .hero-badge {
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
           }
           .hero-buttons {
             justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
           }
         }
       `}</style>
