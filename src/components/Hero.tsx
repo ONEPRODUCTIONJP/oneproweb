@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: FC = () => {
   return (
@@ -10,21 +10,10 @@ const Hero: FC = () => {
       <div className="grid-overlay"></div>
 
       <div className="container hero-container">
-        <motion.div
+        <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="announcement-badge"
-        >
-          <span className="badge-pulse"></span>
-          <Sparkles size={14} className="badge-icon" />
-          <span className="badge-text">REDEFINING DIGITAL EXCELLENCE</span>
-        </motion.div>
-
-        <motion.h1 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="hero-title font-black"
         >
           システムで、<br />
@@ -32,18 +21,18 @@ const Hero: FC = () => {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="hero-description"
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="hero-description font-medium"
         >
-          現場のリアルな課題に寄り添い、圧倒的な業務効率化を実現するアプリ開発スタジオ。発注・在庫管理の時間を劇的に削減し、ミスをなくす確かなシステムを提供します。
+          経営の効率化と、現場の使いやすさを両立するアプリ開発。
         </motion.p>
         
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="hero-actions"
         >
           <a href="#contact" className="btn btn-primary btn-hero">
@@ -51,7 +40,7 @@ const Hero: FC = () => {
             <ArrowRight size={20} className="btn-icon" />
           </a>
           <a href="#services" className="btn btn-secondary btn-hero">
-            サービス一覧
+            サービス内容
           </a>
         </motion.div>
       </div>

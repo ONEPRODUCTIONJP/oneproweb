@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 function App() {
   return (
@@ -18,75 +18,25 @@ function App() {
         {/* About Section */}
         <section id="about" className="about-section">
           <div className="container">
-            <div className="about-grid">
-              <motion.div 
-                initial={{ opacity: 0, x: -40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="about-content"
-              >
-                <div className="section-tag mb-6">
-                  OUR MISSION
-                </div>
-                <h2 className="about-title font-black">
-                  ビジネスの可能性を<br /><span className="text-gradient-primary font-black">最大限に引き出す</span>
-                </h2>
-                <p className="about-desc mb-6">
-                  ONE PRODUCTIONは、単なるシステム開発会社ではありません。現場のリアルな声に耳を傾け、お客様のビジネス課題を根本から解決するパートナーです。
-                </p>
-                <p className="about-desc mb-12">
-                  実際の事例として、飲食店の業務効率化プロジェクトにおいて、専用アプリの導入により在庫管理・発注業務の時間を75%削減。発注ミスをゼロにする確かな実績を達成しました。
-                </p>
-                
-                {/* Big Numbers (Social Proof) */}
-                <div className="stats-grid">
-                  <div className="stat-card group">
-                    <span className="stat-number group-hover-primary">75%</span>
-                    <div className="stat-label">
-                      <CheckCircle2 size={16} className="text-primary-color" />
-                      Time Reduction
-                    </div>
-                    <span className="stat-subtext">在庫管理・発注業務の時間を劇的に削減</span>
-                    <div className="stat-glow glow-primary"></div>
-                  </div>
-                  <div className="stat-card group">
-                    <span className="stat-number group-hover-cyan">ZERO</span>
-                    <div className="stat-label">
-                      <CheckCircle2 size={16} className="text-cyan-color" />
-                      Order Errors
-                    </div>
-                    <span className="stat-subtext">アナログな発注ミスやトラブルを完全ゼロへ</span>
-                    <div className="stat-glow glow-cyan"></div>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="about-visual"
-              >
-                <div className="about-box">
-                  <div className="about-box-bg"></div>
-                  <div className="about-watermark select-none">
-                    DX
-                  </div>
-                  <div className="about-box-glow"></div>
-                  <div className="about-box-card">
-                    <span className="card-tag">ACCELERATION HUB</span>
-                    <span className="card-text">最新テクノロジーと確かな戦略で牽引</span>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="about-content text-center max-w-4xl mx-auto"
+            >
+              <h2 className="about-title font-black mb-6">
+                現場の声から生まれる、<br /><span className="text-gradient-primary font-black">やさしいシステム</span>
+              </h2>
+              <p className="about-desc font-medium">
+                ONE PRODUCTIONは、システムを通じて日々の業務を楽にしたいと願う開発チームです。現場スタッフの皆様のお声に耳を傾け、あらゆる業界の課題に寄り添い、使いやすいアプリを確かな技術でお作りいたします。
+              </p>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="cta-section">
+        <section id="contact" className="cta-section">
           <div className="container">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
@@ -98,17 +48,14 @@ function App() {
               <div className="cta-glow"></div>
               
               <div className="cta-content">
-                <span className="section-tag mb-8">
-                  LET'S BUILD TOGETHER
-                </span>
                 <h2 className="cta-title font-black">
-                  READY TO <span className="text-gradient-primary font-black">ACCELERATE?</span>
+                  まずは、お気軽にご相談ください
                 </h2>
-                <p className="cta-desc mb-10">
-                  あなたのビジネスに最適なシステムを。最新のテクノロジースタックで、競争優位性を生み出す開発を始めましょう。
+                <p className="cta-desc mb-10 font-medium">
+                  「何から相談していいか分からない」「今の業務をもっと楽にしたい」など、どんな些細なお悩みでも大歓迎です。一緒に最適な進め方を考えさせていただきます。
                 </p>
-                <a href="#contact" className="btn btn-primary btn-cta">
-                  お問い合わせはこちら
+                <a href="mailto:oneproductionjp@gmail.com" className="btn btn-primary btn-cta">
+                  お問い合わせ
                   <ArrowRight size={22} className="cta-btn-icon" />
                 </a>
               </div>

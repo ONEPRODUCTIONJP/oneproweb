@@ -1,32 +1,20 @@
 import type { FC } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, BarChart3, Cpu, Rocket } from 'lucide-react';
+
 
 const Services: FC = () => {
   const services = [
     {
-      title: '業務効率化アプリ開発',
-      description: '現場のワークフローを徹底的に分析し、在庫管理や発注業務に特化した使いやすい専用アプリを開発します。',
-      icon: <Zap className="service-icon" size={26} />,
-      features: ['専用モバイル/Webアプリ', '発注業務の自動化', 'UI/UX最適化']
+      title: '現場に寄り添うアプリ開発',
+      description: '毎日使う現場の皆様が心地よく操作できるよう、お話を丁寧に伺いながら、業務に馴染むアプリをお作りします。'
     },
     {
-      title: '店舗・飲食店DX支援',
-      description: '紙やスプレッドシートによるアナログな管理フローをデジタル化し、ミスや確認の手間を劇的に削減します。',
-      icon: <Rocket className="service-icon" size={26} />,
-      features: ['ペーパーレス化', '在庫ロスの削減', '現場ヒアリング']
+      title: '業務プロセスの見直し',
+      description: '紙やエクセルでの管理にかかる負担を和らげます。あらゆる業務の負担を減らし、スムーズな運用をお手伝いします。'
     },
     {
-      title: 'プロセス連携・自動化',
-      description: '既存のPOSレジや社内ツールとデータをシームレスに連携し、二重入力を防ぐ自動化環境を構築します。',
-      icon: <Cpu className="service-icon" size={26} />,
-      features: ['API連携', '二重入力防止', 'データ同期']
-    },
-    {
-      title: 'データ分析・経営可視化',
-      description: '日々の発注状況やコスト状況をリアルタイムで可視化し、正確でスピーディーな経営判断をサポートします。',
-      icon: <BarChart3 className="service-icon" size={26} />,
-      features: ['リアルタイム集計', 'コスト可視化', 'BIツール導入']
+      title: '一緒に歩むパートナーとして',
+      description: '納品して終わりではなく、導入後のお困りごとやご要望の変化に合わせて、ビジネスの成長を継続的にサポートいたします。'
     }
   ];
 
@@ -34,32 +22,14 @@ const Services: FC = () => {
     <section id="services" className="services-section">
       <div className="container">
         <div className="section-header">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="section-tag"
-          >
-            OUR EXPERTISE
-          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
             className="section-title font-black"
           >
-            ビジネスを支える<br /><span className="text-gradient-primary font-black">コア・テクノロジー</span>
+            CORE <span className="text-gradient-primary font-black">SERVICES</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="section-description"
-          >
-            私たちは、技術の力でビジネスの可能性を広げ、持続的な成長を実現するためのソリューションを提供します。
-          </motion.p>
         </div>
 
         <div className="services-grid">
@@ -73,21 +43,10 @@ const Services: FC = () => {
               className="glass-card service-card"
             >
               <div className="service-content">
-                <div className="service-icon-wrapper">
-                  {service.icon}
-                  <div className="service-icon-glow"></div>
-                </div>
-                <h3 className="service-card-title font-bold">{service.title}</h3>
-                <p className="service-card-description mb-8">
+                <h3 className="service-card-title font-bold mb-4">{service.title}</h3>
+                <p className="service-card-description font-medium">
                   {service.description}
                 </p>
-              </div>
-              <div className="service-features">
-                {service.features.map(feature => (
-                  <span key={feature} className="feature-tag font-medium">
-                    {feature}
-                  </span>
-                ))}
               </div>
             </motion.div>
           ))}
@@ -96,8 +55,8 @@ const Services: FC = () => {
 
       <style>{`
         .services-section {
-          padding: 10rem 0;
-          background: var(--surface);
+          padding: 8rem 0;
+          background: var(--bg);
           position: relative;
         }
 

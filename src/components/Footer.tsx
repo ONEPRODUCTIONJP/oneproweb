@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="footer-section">
+    <footer className="footer-section">
       <div className="footer-gradient-bar"></div>
       
       <div className="container">
@@ -10,7 +10,7 @@ const Footer: FC = () => {
           <div className="footer-brand-col">
             <a href="#" className="footer-brand group">
               <img 
-                src="/logo.png" 
+                src="/logo.png?v=11" 
                 alt="ONE PRODUCTION" 
                 className="footer-logo group-hover:scale-110"
               />
@@ -18,44 +18,27 @@ const Footer: FC = () => {
                 One <span className="text-primary-color">Production</span>
               </span>
             </a>
-            <p className="footer-desc">
-              「システムで、ビジネスを加速する。」<br />
-              現場のリアルな課題に寄り添い、確かな技術と戦略でお客様のビジネスのDX化をサポートします。
+            <p className="footer-desc font-medium">
+              「システムで、ビジネスを加速する。」
             </p>
-            <div className="partner-tags">
-              <span className="tag-border">TECH PARTNER</span>
-              <span className="tag-primary">TOKYO, JAPAN</span>
-            </div>
-          </div>
-
-          <div className="footer-nav-col">
-            <h4 className="footer-heading">Navigation</h4>
-            <ul className="footer-links list-none">
-              <li><a href="#" className="footer-link">Home</a></li>
-              <li><a href="#services" className="footer-link">Services</a></li>
-              <li><a href="#about" className="footer-link">About</a></li>
-              <li><a href="#contact" className="footer-link">Contact</a></li>
-            </ul>
           </div>
 
           <div className="footer-contact-col">
-            <h4 className="footer-heading">Inquiries</h4>
+            <h4 className="footer-heading">お問い合わせ</h4>
+            <p className="footer-subtext mb-4 text-xs" style={{ color: 'var(--text-dim)' }}>
+              プロジェクトのご相談や業務DX診断など、お気軽にお問い合わせください。
+            </p>
             <ul className="footer-links list-none">
-              <li className="footer-text select-all hover-white cursor-pointer">info@oneproduction.com</li>
-              <li className="footer-text select-all hover-white cursor-pointer">03-xxxx-xxxx</li>
-              <li className="footer-text">Tokyo, Japan</li>
+              <li><a href="mailto:oneproductionjp@gmail.com" className="footer-text hover-white font-bold select-all">oneproductionjp@gmail.com</a></li>
+              <li className="footer-text text-xs" style={{ color: 'var(--text-dim)' }}>Kyoto, Japan</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p className="copyright text-xs">
-            © 2026 ONE PRODUCTION Inc. All rights reserved.
+            © 2026 ONE PRODUCTION. All rights reserved.
           </p>
-          <div className="legal-links">
-            <a href="#" className="footer-link text-xs">Privacy Policy</a>
-            <a href="#" className="footer-link text-xs">Terms of Service</a>
-          </div>
         </div>
       </div>
 
@@ -80,7 +63,7 @@ const Footer: FC = () => {
 
         .footer-grid {
           display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
+          grid-template-columns: 2fr 1fr;
           gap: 4rem;
           margin-bottom: 5rem;
         }
