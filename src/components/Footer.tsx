@@ -10,17 +10,10 @@ const Footer: FC = () => {
           <div className="footer-brand-col">
             <a href="#" className="footer-brand group">
               <img 
-                src="/IMG_4193.png" 
+                src="/logo.png" 
                 alt="ONE PRODUCTION" 
                 className="footer-logo group-hover:scale-110"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
               />
-              <div className="footer-fallback hidden">
-                <span>O</span>
-              </div>
               <span className="brand-text uppercase">
                 One <span className="text-primary-color">Production</span>
               </span>

@@ -22,17 +22,10 @@ const Navbar: FC = () => {
       <div className="container navbar-container">
         <a href="#" className="navbar-brand group">
           <img 
-            src="/IMG_4193.png" 
+            src="/logo.png" 
             alt="ONE PRODUCTION" 
             className="navbar-logo group-hover:scale-110"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
-            }}
           />
-          <div className="logo-fallback hidden">
-            <span>O</span>
-          </div>
           <span className="brand-text">
             ONE <span className="text-primary-color">PRODUCTION</span>
           </span>
