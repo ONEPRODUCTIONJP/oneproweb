@@ -22,7 +22,7 @@ const Navbar: FC = () => {
       <div className="container navbar-container">
         <a href="#" className="navbar-brand group">
           <img 
-            src="/logo.png" 
+            src="/favicon.png" 
             alt="ONE PRODUCTION" 
             className="navbar-logo group-hover:scale-110"
             onError={(e) => {

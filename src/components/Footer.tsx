@@ -10,7 +10,7 @@ const Footer: FC = () => {
           <div className="footer-brand-col">
             <a href="#" className="footer-brand group">
               <img 
-                src="/logo.png" 
+                src="/favicon.png" 
                 alt="ONE PRODUCTION" 
                 className="footer-logo group-hover:scale-110"
                 onError={(e) => {
