@@ -16,48 +16,48 @@ function App() {
         <Services />
 
         {/* About Section */}
-        <section id="about" className="section-padding relative overflow-hidden bg-bg">
+        <section id="about" className="about-section">
           <div className="container">
-            <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            <div className="about-grid">
               <motion.div 
                 initial={{ opacity: 0, x: -40 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1"
+                className="about-content"
               >
-                <div className="section-tag inline-block uppercase font-black text-xs text-primary tracking-widest bg-primary/10 px-4 py-1.5 rounded-full mb-6 border border-primary/20">
+                <div className="section-tag mb-6">
                   OUR MISSION
                 </div>
-                <h2 className="text-4xl lg:text-5xl font-black mb-8 tracking-tight text-white leading-tight">
+                <h2 className="about-title font-black">
                   ビジネスの可能性を<br /><span className="text-gradient-primary font-black">最大限に引き出す</span>
                 </h2>
-                <p className="text-lg text-text-dim leading-relaxed mb-6">
+                <p className="about-desc mb-6">
                   ONE PRODUCTIONは、単なるシステム開発会社ではありません。現場のリアルな声に耳を傾け、お客様のビジネス課題を根本から解決するパートナーです。
                 </p>
-                <p className="text-lg text-text-dim leading-relaxed mb-12">
+                <p className="about-desc mb-12">
                   実際の事例として、飲食店の業務効率化プロジェクトにおいて、専用アプリの導入により在庫管理・発注業務の時間を75%削減。発注ミスをゼロにする確かな実績を達成しました。
                 </p>
                 
                 {/* Big Numbers (Social Proof) */}
-                <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-primary/30 transition-all duration-300">
-                    <span className="block text-5xl font-black text-white mb-2 tracking-tight group-hover:text-primary transition-colors">75%</span>
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-text-dim uppercase tracking-wider">
-                      <CheckCircle2 size={14} className="text-primary" />
+                <div className="stats-grid">
+                  <div className="stat-card group">
+                    <span className="stat-number group-hover-primary">75%</span>
+                    <div className="stat-label">
+                      <CheckCircle2 size={16} className="text-primary-color" />
                       Time Reduction
                     </div>
-                    <span className="block text-xs text-text-dim mt-2">在庫管理・発注業務の時間を劇的に削減</span>
-                    <div className="absolute -right-10 -bottom-10 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-all"></div>
+                    <span className="stat-subtext">在庫管理・発注業務の時間を劇的に削減</span>
+                    <div className="stat-glow glow-primary"></div>
                   </div>
-                  <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative overflow-hidden group hover:border-cyan/30 transition-all duration-300">
-                    <span className="block text-5xl font-black text-white mb-2 tracking-tight group-hover:text-cyan transition-colors">ZERO</span>
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-text-dim uppercase tracking-wider">
-                      <CheckCircle2 size={14} className="text-cyan" />
+                  <div className="stat-card group">
+                    <span className="stat-number group-hover-cyan">ZERO</span>
+                    <div className="stat-label">
+                      <CheckCircle2 size={16} className="text-cyan-color" />
                       Order Errors
                     </div>
-                    <span className="block text-xs text-text-dim mt-2">アナログな発注ミスやトラブルを完全ゼロへ</span>
-                    <div className="absolute -right-10 -bottom-10 w-24 h-24 bg-cyan/10 rounded-full blur-xl group-hover:bg-cyan/20 transition-all"></div>
+                    <span className="stat-subtext">アナログな発注ミスやトラブルを完全ゼロへ</span>
+                    <div className="stat-glow glow-cyan"></div>
                   </div>
                 </div>
               </motion.div>
@@ -67,17 +67,17 @@ function App() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="flex-1 relative w-full flex justify-center"
+                className="about-visual"
               >
-                <div className="about-image-wrapper w-full max-w-lg aspect-square rounded-[40px] border border-white/10 bg-surface flex items-center justify-center relative overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-cyan/10 opacity-50"></div>
-                  <div className="about-image-inner text-primary opacity-15 font-black text-[12rem] lg:text-[14rem] select-none transform -rotate-12 tracking-tighter filter drop-shadow-[0_0_50px_rgba(0,255,102,0.5)]">
+                <div className="about-box">
+                  <div className="about-box-bg"></div>
+                  <div className="about-watermark select-none">
                     DX
                   </div>
-                  <div className="glow-orb absolute w-72 h-72 bg-primary/20 rounded-full blur-3xl -top-10 -right-10 pointer-events-none"></div>
-                  <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 text-center">
-                    <span className="text-xs uppercase font-extrabold tracking-widest text-primary block mb-1">ACCELERATION HUB</span>
-                    <span className="text-sm text-text-dim font-medium">最新のテクノロジーと確かな戦略でビジネスを牽引</span>
+                  <div className="about-box-glow"></div>
+                  <div className="about-box-card">
+                    <span className="card-tag">ACCELERATION HUB</span>
+                    <span className="card-text">最新テクノロジーと確かな戦略で牽引</span>
                   </div>
                 </div>
               </motion.div>
@@ -86,31 +86,30 @@ function App() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-surface relative overflow-hidden">
-          <div className="absolute inset-0 grid-pattern opacity-50"></div>
-          <div className="container relative z-10">
+        <section className="cta-section">
+          <div className="container">
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="cta-card p-12 lg:p-20 rounded-[40px] bg-black border border-white/10 relative overflow-hidden text-center shadow-[0_20px_60px_rgba(0,0,0,0.8)]"
+              className="cta-card"
             >
-              <div className="cta-glow absolute w-96 h-96 bg-primary/20 rounded-full blur-3xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+              <div className="cta-glow"></div>
               
-              <div className="relative z-10 max-w-3xl mx-auto">
-                <span className="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-1.5 rounded-full inline-block mb-8 border border-primary/20">
+              <div className="cta-content">
+                <span className="section-tag mb-8">
                   LET'S BUILD TOGETHER
                 </span>
-                <h2 className="cta-title text-4xl lg:text-6xl font-black mb-6 tracking-tight text-white leading-tight">
+                <h2 className="cta-title font-black">
                   READY TO <span className="text-gradient-primary font-black">ACCELERATE?</span>
                 </h2>
-                <p className="cta-description text-lg lg:text-xl text-text-dim mb-10 leading-relaxed max-w-2xl mx-auto">
+                <p className="cta-desc mb-10">
                   あなたのビジネスに最適なシステムを。最新のテクノロジースタックで、競争優位性を生み出す開発を始めましょう。
                 </p>
-                <a href="#contact" className="btn btn-primary btn-lg no-underline text-lg font-bold px-10 py-5">
+                <a href="#contact" className="btn btn-primary btn-cta">
                   お問い合わせはこちら
-                  <ArrowRight size={22} className="transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={22} className="cta-btn-icon" />
                 </a>
               </div>
             </motion.div>
@@ -119,6 +118,279 @@ function App() {
       </main>
 
       <Footer />
+
+      <style>{`
+        /* About Section Styling */
+        .about-section {
+          padding: 10rem 0;
+          background: var(--bg);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 6rem;
+          align-items: center;
+        }
+
+        .section-tag {
+          display: inline-block;
+          text-transform: uppercase;
+          font-weight: 900;
+          font-size: 0.75rem;
+          color: var(--primary);
+          letter-spacing: 0.15em;
+          background: rgba(0, 255, 102, 0.1);
+          padding: 0.4rem 1.25rem;
+          border-radius: 100px;
+          border: 1px solid rgba(0, 255, 102, 0.25);
+        }
+
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+        .mb-12 { margin-bottom: 3rem; }
+
+        .about-title {
+          font-size: clamp(2.2rem, 5vw, 3.5rem);
+          line-height: 1.1;
+          margin-bottom: 2rem;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+        }
+
+        .about-desc {
+          font-size: 1.125rem;
+          color: var(--text-dim);
+          line-height: 1.8;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          padding-top: 3rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-card {
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 24px;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+          border-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-3px);
+        }
+
+        .stat-number {
+          display: block;
+          font-size: 3.5rem;
+          font-weight: 900;
+          color: #ffffff;
+          margin-bottom: 0.5rem;
+          line-height: 1;
+          transition: color 0.3s;
+        }
+
+        .stat-card:hover .group-hover-primary { color: var(--primary); }
+        .stat-card:hover .group-hover-cyan { color: var(--cyan); }
+
+        .stat-label {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.85rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--text-dim);
+          margin-bottom: 0.5rem;
+        }
+
+        .text-primary-color { color: var(--primary); }
+        .text-cyan-color { color: var(--cyan); }
+
+        .stat-subtext {
+          display: block;
+          font-size: 0.8rem;
+          color: var(--text-dim);
+          line-height: 1.5;
+        }
+
+        .stat-glow {
+          position: absolute;
+          right: -30px;
+          bottom: -30px;
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          filter: blur(30px);
+          opacity: 0.5;
+          transition: opacity 0.3s;
+        }
+
+        .glow-primary { background: rgba(0, 255, 102, 0.15); }
+        .glow-cyan { background: rgba(0, 184, 255, 0.15); }
+        .stat-card:hover .stat-glow { opacity: 0.8; }
+
+        .about-visual {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .about-box {
+          width: 100%;
+          max-width: 480px;
+          aspect-ratio: 1 / 1;
+          border-radius: 40px;
+          background: var(--surface);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .about-box-bg {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(0,255,102,0.1) 0%, transparent 50%, rgba(0,184,255,0.1) 100%);
+        }
+
+        .about-watermark {
+          font-size: 14rem;
+          font-weight: 900;
+          color: var(--primary);
+          opacity: 0.15;
+          transform: rotate(-12deg);
+          user-select: none;
+          filter: drop-shadow(0 0 40px rgba(0,255,102,0.4));
+        }
+
+        .about-box-glow {
+          position: absolute;
+          top: -20px;
+          right: -20px;
+          width: 250px;
+          height: 250px;
+          background: rgba(0,255,102,0.2);
+          border-radius: 50%;
+          filter: blur(60px);
+        }
+
+        .about-box-card {
+          position: absolute;
+          bottom: 2rem;
+          left: 2rem;
+          right: 2rem;
+          padding: 1.5rem;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
+          text-align: center;
+        }
+
+        .card-tag {
+          display: block;
+          font-size: 0.75rem;
+          font-weight: 900;
+          color: var(--primary);
+          letter-spacing: 0.15em;
+          margin-bottom: 0.25rem;
+        }
+
+        .card-text {
+          font-size: 0.9rem;
+          color: var(--text-dim);
+          font-weight: 600;
+        }
+
+        /* CTA Section Styling */
+        .cta-section {
+          padding: 8rem 0 12rem;
+          background: var(--surface);
+        }
+
+        .cta-card {
+          padding: 6rem 4rem;
+          background: #000000;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 40px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+        }
+
+        .cta-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 500px;
+          height: 500px;
+          background: rgba(0, 255, 102, 0.15);
+          border-radius: 50%;
+          filter: blur(120px);
+          pointer-events: none;
+        }
+
+        .cta-content {
+          position: relative;
+          z-index: 10;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+
+        .cta-title {
+          font-size: clamp(2.5rem, 6vw, 4.5rem);
+          line-height: 1.1;
+          margin-bottom: 1.5rem;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+        }
+
+        .cta-desc {
+          font-size: 1.25rem;
+          color: var(--text-dim);
+          line-height: 1.7;
+        }
+
+        .btn-cta {
+          padding: 1.25rem 3rem;
+          font-size: 1.125rem;
+        }
+
+        .cta-btn-icon {
+          transition: transform 0.3s;
+        }
+
+        .btn-cta:hover .cta-btn-icon {
+          transform: translateX(4px);
+        }
+
+        @media (max-width: 992px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+          .cta-card {
+            padding: 4rem 2rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }

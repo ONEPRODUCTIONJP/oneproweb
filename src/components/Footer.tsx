@@ -2,70 +2,240 @@ import type { FC } from 'react';
 
 const Footer: FC = () => {
   return (
-    <footer id="contact" className="pt-24 pb-12 bg-bg border-t border-white/10 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
+    <footer id="contact" className="footer-section">
+      <div className="footer-gradient-bar"></div>
       
       <div className="container">
-        <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20">
-          <div className="max-w-md">
-            <a href="#" className="flex items-center gap-3 mb-6 no-underline group">
+        <div className="footer-grid">
+          <div className="footer-brand-col">
+            <a href="#" className="footer-brand group">
               <img 
                 src="/logo.png" 
                 alt="ONE PRODUCTION" 
-                className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_15px_rgba(0,255,102,0.3)]"
+                className="footer-logo group-hover:scale-110"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   e.currentTarget.nextElementSibling?.classList.remove('hidden');
                 }}
               />
-              <div className="w-9 h-9 bg-primary hidden items-center justify-center rounded-xl shadow-[0_0_20px_rgba(0,255,102,0.3)]">
-                <span className="text-black font-black text-base">O</span>
+              <div className="footer-fallback hidden">
+                <span>O</span>
               </div>
-              <span className="brand text-xl font-extrabold tracking-tight uppercase text-white">
-                One <span className="text-primary">Production</span>
+              <span className="brand-text uppercase">
+                One <span className="text-primary-color">Production</span>
               </span>
             </a>
-            <p className="text-text-dim text-base leading-relaxed mb-8">
+            <p className="footer-desc">
               「システムで、ビジネスを加速する。」<br />
-              最新のテクノロジーと確かな戦略で、お客様のビジネスのDX化と効率化をサポートします。
+              現場のリアルな課題に寄り添い、確かな技術と戦略でお客様のビジネスのDX化をサポートします。
             </p>
-            <div className="flex gap-4">
-              <span className="text-xs font-bold uppercase tracking-widest text-text-dim bg-white/5 px-3 py-1 rounded-full border border-white/5">TECH PARTNER</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">TOKYO, JAPAN</span>
+            <div className="partner-tags">
+              <span className="tag-border">TECH PARTNER</span>
+              <span className="tag-primary">TOKYO, JAPAN</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-12 sm:gap-20">
-            <div>
-              <h4 className="text-white font-extrabold mb-6 text-xs uppercase tracking-widest text-primary">Navigation</h4>
-              <ul className="flex flex-col gap-3 list-none">
-                <li><a href="#" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Home</a></li>
-                <li><a href="#services" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Services</a></li>
-                <li><a href="#about" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">About</a></li>
-                <li><a href="#contact" className="text-text-dim hover:text-white text-sm font-medium transition-colors no-underline">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-extrabold mb-6 text-xs uppercase tracking-widest text-primary">Inquiries</h4>
-              <ul className="flex flex-col gap-3 list-none">
-                <li className="text-text-dim text-sm font-medium select-all hover:text-white transition-colors cursor-pointer">info@oneproduction.com</li>
-                <li className="text-text-dim text-sm font-medium select-all hover:text-white transition-colors cursor-pointer">03-xxxx-xxxx</li>
-                <li className="text-text-dim text-sm font-medium">Tokyo, Japan</li>
-              </ul>
-            </div>
+          <div className="footer-nav-col">
+            <h4 className="footer-heading">Navigation</h4>
+            <ul className="footer-links list-none">
+              <li><a href="#" className="footer-link">Home</a></li>
+              <li><a href="#services" className="footer-link">Services</a></li>
+              <li><a href="#about" className="footer-link">About</a></li>
+              <li><a href="#contact" className="footer-link">Contact</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-contact-col">
+            <h4 className="footer-heading">Inquiries</h4>
+            <ul className="footer-links list-none">
+              <li className="footer-text select-all hover-white cursor-pointer">info@oneproduction.com</li>
+              <li className="footer-text select-all hover-white cursor-pointer">03-xxxx-xxxx</li>
+              <li className="footer-text">Tokyo, Japan</li>
+            </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-text-dim text-xs font-medium">
+        <div className="footer-bottom">
+          <p className="copyright text-xs">
             © 2026 ONE PRODUCTION Inc. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-text-dim hover:text-white text-xs font-medium transition-colors no-underline">Privacy Policy</a>
-            <a href="#" className="text-text-dim hover:text-white text-xs font-medium transition-colors no-underline">Terms of Service</a>
+          <div className="legal-links">
+            <a href="#" className="footer-link text-xs">Privacy Policy</a>
+            <a href="#" className="footer-link text-xs">Terms of Service</a>
           </div>
         </div>
       </div>
+
+      <style>{`
+        .footer-section {
+          padding: 6rem 0 3rem;
+          background: var(--bg);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          position: relative;
+        }
+
+        .footer-gradient-bar {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50%;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, var(--primary), transparent);
+          opacity: 0.5;
+        }
+
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr;
+          gap: 4rem;
+          margin-bottom: 5rem;
+        }
+
+        .footer-brand {
+          display: flex;
+          align-items: center;
+          gap: 0.875rem;
+          text-decoration: none;
+          margin-bottom: 1.5rem;
+          cursor: pointer;
+        }
+
+        .footer-logo {
+          width: 36px;
+          height: 36px;
+          object-fit: contain;
+          filter: drop-shadow(0 0 15px rgba(0, 255, 102, 0.3));
+          transition: transform 0.3s;
+        }
+
+        .footer-brand:hover .footer-logo {
+          transform: scale(1.1);
+        }
+
+        .footer-fallback {
+          width: 36px;
+          height: 36px;
+          background: var(--primary);
+          color: #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          border-radius: 12px;
+        }
+
+        .brand-text {
+          font-weight: 800;
+          font-size: 1.25rem;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+        }
+
+        .text-primary-color { color: var(--primary); }
+        .uppercase { text-transform: uppercase; }
+        .hidden { display: none !important; }
+
+        .footer-desc {
+          color: var(--text-dim);
+          line-height: 1.7;
+          font-size: 1rem;
+          margin-bottom: 2rem;
+          max-width: 420px;
+        }
+
+        .partner-tags {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .tag-border {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: var(--text-dim);
+          background: rgba(255, 255, 255, 0.04);
+          padding: 0.3rem 0.8rem;
+          border-radius: 100px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          letter-spacing: 0.05em;
+        }
+
+        .tag-primary {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: var(--primary);
+          background: rgba(0, 255, 102, 0.1);
+          padding: 0.3rem 0.8rem;
+          border-radius: 100px;
+          border: 1px solid rgba(0, 255, 102, 0.25);
+          letter-spacing: 0.05em;
+        }
+
+        .footer-heading {
+          font-size: 0.75rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.15em;
+          color: var(--primary);
+          margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.875rem;
+          list-style: none;
+        }
+
+        .footer-link {
+          color: var(--text-dim);
+          text-decoration: none;
+          font-size: 0.95rem;
+          transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+          color: #ffffff;
+        }
+
+        .footer-text {
+          color: var(--text-dim);
+          font-size: 0.95rem;
+          transition: color 0.2s;
+        }
+
+        .hover-white:hover { color: #ffffff; }
+        .select-all { user-select: all; }
+        .cursor-pointer { cursor: pointer; }
+
+        .footer-bottom {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 2.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .copyright { color: var(--text-dim); }
+        .text-xs { font-size: 0.8rem; }
+
+        .legal-links {
+          display: flex;
+          gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+          }
+        }
+      `}</style>
     </footer>
   );
 };

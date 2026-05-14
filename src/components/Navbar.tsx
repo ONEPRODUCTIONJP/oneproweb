@@ -1,169 +1,172 @@
 import { useState, useEffect } from 'react';
 import type { FC } from 'react';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`nav ${isScrolled ? 'nav-scrolled' : ''}`}
-    >
-      <div className="container nav-container">
-        <a href="#" className="nav-brand flex items-center gap-3 no-underline group">
+    <header className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+      <div className="container navbar-container">
+        <a href="#" className="navbar-brand group">
           <img 
             src="/logo.png" 
             alt="ONE PRODUCTION" 
-            className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 filter drop-shadow-[0_0_15px_rgba(0,255,102,0.3)]"
+            className="navbar-logo group-hover:scale-110"
             onError={(e) => {
-              // 画像がない場合のフォールバック表示
               e.currentTarget.style.display = 'none';
               e.currentTarget.nextElementSibling?.classList.remove('hidden');
             }}
           />
-          <div className="logo-icon hidden items-center justify-center font-black">
+          <div className="logo-fallback hidden">
             <span>O</span>
           </div>
-          <span className="brand-text font-extrabold tracking-tight text-white">
-            ONE <span className="text-primary">PRODUCTION</span>
+          <span className="brand-text">
+            ONE <span className="text-primary-color">PRODUCTION</span>
           </span>
         </a>
 
-        {/* Desktop Menu */}
-        <div className="nav-desktop flex items-center gap-10">
-          <div className="flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className="nav-link text-sm font-medium text-text-dim hover:text-white transition-colors no-underline"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <a href="#contact" className="btn btn-primary btn-sm no-underline text-sm font-bold">
-            Contact
-          </a>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button 
-          className="nav-mobile-toggle block md:hidden text-white bg-transparent border-none cursor-pointer p-1"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <nav>
+          <ul className="nav-links">
+            <li><a href="#" className="nav-item">Home</a></li>
+            <li><a href="#services" className="nav-item">Services</a></li>
+            <li><a href="#about" className="nav-item">About</a></li>
+            <li><a href="#contact" className="nav-item btn-contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="nav-mobile-menu bg-surface border-b border-white/10 overflow-hidden md:hidden"
-          >
-            <div className="p-8 flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
-                  className="text-xl font-bold text-white no-underline py-2 border-b border-white/5"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href="#contact" 
-                className="btn btn-primary w-full text-center mt-4 no-underline font-bold"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <style>{`
-        .nav {
+        .navbar {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
-          z-index: 100;
-          padding: 1.5rem 0;
+          z-index: 1000;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          border-bottom: 1px solid transparent;
         }
 
-        .nav-scrolled {
-          padding: 1rem 0;
-          background: rgba(3, 3, 3, 0.75);
+        .navbar-scrolled {
+          background: rgba(3, 3, 3, 0.85);
           backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--border);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .nav-container {
+        .navbar-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          height: 5.5rem;
+          transition: height 0.3s;
         }
 
-        .logo-icon {
+        .navbar-scrolled .navbar-container {
+          height: 4.5rem;
+        }
+
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+          gap: 0.875rem;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .navbar-logo {
           width: 38px;
           height: 38px;
-          background: var(--primary);
-          border-radius: 12px;
-          color: #000;
-          font-size: 1.25rem;
-          box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+          object-fit: contain;
+          filter: drop-shadow(0 0 15px rgba(0, 255, 102, 0.3));
           transition: transform 0.3s ease;
         }
 
-        .nav-brand:hover .logo-icon {
-          transform: rotate(-10deg) scale(1.05);
+        .group:hover .navbar-logo {
+          transform: scale(1.1);
+        }
+
+        .logo-fallback {
+          width: 36px;
+          height: 36px;
+          background: var(--primary);
+          color: #000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          border-radius: 12px;
+          font-size: 1.1rem;
+        }
+
+        .hidden {
+          display: none !important;
         }
 
         .brand-text {
+          font-weight: 800;
           font-size: 1.25rem;
+          letter-spacing: -0.03em;
+          color: #ffffff;
         }
 
-        .btn-sm {
-          padding: 0.6rem 1.4rem;
-          border-radius: 10px;
+        .text-primary-color {
+          color: var(--primary);
+        }
+
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 2.5rem;
+          list-style: none;
+        }
+
+        .nav-item {
+          color: var(--text-dim);
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.95rem;
+          transition: color 0.2s ease;
+        }
+
+        .nav-item:hover {
+          color: #ffffff;
+        }
+
+        .btn-contact {
+          color: #ffffff;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 0.6rem 1.25rem;
+          border-radius: 100px;
+          transition: all 0.3s ease;
+        }
+
+        .btn-contact:hover {
+          background: var(--primary);
+          color: #000000;
+          border-color: var(--primary);
+          transform: translateY(-1px);
         }
 
         @media (max-width: 768px) {
-          .nav-desktop { display: none; }
+          .nav-links {
+            gap: 1.5rem;
+          }
         }
       `}</style>
-    </motion.nav>
+    </header>
   );
 };
 
