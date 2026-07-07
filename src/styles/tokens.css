@@ -1,0 +1,49 @@
+:root {
+  /* color */
+  --color-bg: #030303;
+  --color-surface: #0a0a0a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #00ff66;
+  --color-primary-glow: rgba(0, 255, 102, 0.15);
+  --color-cyan: #00b8ff;
+  --color-text: #ffffff;
+  --color-text-dim: #a1a1aa;
+  --color-card-bg: rgba(255, 255, 255, 0.02);
+  --color-card-bg-hover: rgba(255, 255, 255, 0.04);
+
+  /* typography */
+  --font-display: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  --size-hero: clamp(2.4rem, 7.5vw, 5.5rem);
+  --size-h2: clamp(1.8rem, 5vw, 3.5rem);
+  --size-body: clamp(1rem, 1.6vw, 1.25rem);
+  --lh-tight: 1.1;
+  --ls-tight: -0.03em;
+
+  /* spacing */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 4rem;
+  --space-5: 8rem;
+
+  /* radius */
+  --radius-sm: 8px;
+  --radius-md: 24px;
+  --radius-pill: 999px;
+
+  /* motion */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur-med: 0.6s;
+
+  /* layout */
+  --safe-w: min(100vw, 1200px);
+  --content-w: min(100vw, 700px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
