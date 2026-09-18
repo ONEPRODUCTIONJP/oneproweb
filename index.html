@@ -128,6 +128,76 @@
         .site-header__nav .site-header__cta { margin-top: 16px; text-align: center; border-bottom: 1px solid var(--color-primary); }
       }
     </style>
+    <!-- Background FX styles (背景演出・ロゴ用) -->
+    <style>
+      /* 光の玉: transformのみ動かして軽量に */
+      #bg-orbs, #bg-grid, #bg-vignette { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+      #bg-orbs { z-index: -1; }
+      #bg-grid { z-index: -1; }
+      #bg-vignette { z-index: -1; }
+      .orb { position: absolute; border-radius: 50%; will-change: transform; }
+      .orb--a { width: 60vmax; height: 60vmax; left: -15vmax; top: -10vmax;
+        background: radial-gradient(circle, rgba(123, 204, 41, .22) 0%, rgba(123, 204, 41, 0) 65%);
+        animation: orbA 26s ease-in-out infinite alternate; }
+      .orb--b { width: 55vmax; height: 55vmax; right: -18vmax; bottom: -14vmax;
+        background: radial-gradient(circle, rgba(0, 150, 110, .26) 0%, rgba(0, 150, 110, 0) 65%);
+        animation: orbB 32s ease-in-out infinite alternate; }
+      .orb--c { width: 40vmax; height: 40vmax; left: 35%; top: 30%;
+        background: radial-gradient(circle, rgba(60, 200, 130, .13) 0%, rgba(60, 200, 130, 0) 65%);
+        animation: orbC 38s ease-in-out infinite alternate; }
+      @keyframes orbA { to { transform: translate3d(22vw, 16vh, 0) scale(1.15); } }
+      @keyframes orbB { to { transform: translate3d(-24vw, -14vh, 0) scale(1.2); } }
+      @keyframes orbC { to { transform: translate3d(-18vw, 20vh, 0) scale(.85); } }
+
+      /* うっすら光るグリッド（中央から外へフェード） */
+      #bg-grid {
+        background-image:
+          linear-gradient(rgba(123, 204, 41, .07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(123, 204, 41, .07) 1px, transparent 1px);
+        background-size: 64px 64px;
+        -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 20%, transparent 75%);
+        mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, #000 20%, transparent 75%);
+        animation: gridMove 40s linear infinite;
+      }
+      @keyframes gridMove { to { background-position: 64px 64px, 64px 64px; } }
+
+      #bg-vignette { background: radial-gradient(ellipse at center, transparent 45%, rgba(2, 2, 4, .75) 100%); }
+
+      /* ヒーローの背景ロゴ */
+      .hero-logo {
+        position: absolute; z-index: 1; pointer-events: none;
+        top: 50vh; top: calc(var(--vh, 1vh) * 50); left: 50%;
+        width: min(62vmin, 560px); aspect-ratio: 1;
+        transform: translate(-50%, -50%);
+      }
+      .hero-logo img {
+        position: relative; width: 100%; height: 100%; object-fit: contain;
+        opacity: .2; filter: drop-shadow(0 0 40px rgba(123, 204, 41, .55));
+        animation: logoFloat 9s ease-in-out infinite alternate;
+      }
+      .hero-logo__ring {
+        position: absolute; inset: -14%; border-radius: 50%;
+        border: 1px solid rgba(123, 204, 41, .25);
+        box-shadow: 0 0 60px rgba(123, 204, 41, .12), inset 0 0 60px rgba(123, 204, 41, .08);
+        animation: ringSpin 40s linear infinite;
+        -webkit-mask-image: conic-gradient(#000 0 25%, transparent 25% 50%, #000 50% 75%, transparent 75%);
+        mask-image: conic-gradient(#000 0 25%, transparent 25% 50%, #000 50% 75%, transparent 75%);
+      }
+      @keyframes logoFloat { from { transform: translateY(-12px) rotate(-2deg); } to { transform: translateY(12px) rotate(2deg); } }
+      @keyframes ringSpin { to { transform: rotate(360deg); } }
+
+      /* フッターのロゴ（背景透過PNG） */
+      .footer-logo-img { display: block; width: 150px; height: auto; margin: 0 auto 1rem; filter: drop-shadow(0 0 24px rgba(123, 204, 41, .35)); }
+
+      @media (max-width: 860px) {
+        #bg-grid { background-size: 44px 44px; }
+        .hero-logo { width: 78vw; }
+        .footer-logo-img { width: 120px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .orb, #bg-grid, .hero-logo img, .hero-logo__ring { animation: none; }
+      }
+    </style>
     <script type="module" crossorigin src="/assets/main-iDtLh5kg.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
   </head>
@@ -147,6 +217,11 @@
     <!-- Modern CSS Background (Replaces WebGL) -->
     <div id="bg-gradient"></div>
     <div id="bg-noise"></div>
+
+    <!-- Background FX (光の玉・グリッド・ビネット) -->
+    <div id="bg-orbs" aria-hidden="true"><i class="orb orb--a"></i><i class="orb orb--b"></i><i class="orb orb--c"></i></div>
+    <div id="bg-grid" aria-hidden="true"></div>
+    <div id="bg-vignette" aria-hidden="true"></div>
 
     <!-- Custom Cursor -->
     <div id="cursor-main"></div>
@@ -180,6 +255,11 @@
       <main class="scroll-container">
         <!-- Hero Section -->
         <section class="section hero" id="top">
+          <!-- Hero logo mark (背景ロゴ) -->
+          <div class="hero-logo" aria-hidden="true">
+            <span class="hero-logo__ring"></span>
+            <img src="/favicon.png" alt="" width="480" height="480">
+          </div>
           <div class="hero-content">
             <h1 class="catchcopy">
               <div class="line-wrapper"><span class="line">システムで、</span></div>
@@ -390,8 +470,7 @@
       <!-- Footer -->
       <footer class="footer">
         <div class="footer-content">
-          <div class="footer-logo">ONE PRODUCTION</div>
-          <div class="footer-links">
+          <img class="footer-logo-img" src="/logo-full.png" alt="ONE PRODUCTION" width="432" height="512" loading="lazy">          <div class="footer-links">
             <a href="/privacy.html" class="footer-link">プライバシーポリシー</a>
           </div>
           <p class="copyright">&copy; 2026 ONE PRODUCTION. All Rights Reserved.</p>
