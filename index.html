@@ -63,6 +63,71 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Site Header styles (ナビゲーションバー用) -->
+    <style>
+      html { scroll-behavior: smooth; }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+      .site-header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+        height: 72px;
+        background: rgba(5, 5, 8, 0.55);
+        -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: background-color .3s, height .3s;
+      }
+      .site-header.is-scrolled { background: rgba(5, 5, 8, 0.88); height: 64px; }
+      .site-header__inner {
+        height: 100%; max-width: 1400px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 40px);
+        display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      }
+      .site-header__logo {
+        display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;
+        color: #fff; text-decoration: none;
+        font-family: Montserrat, sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: .14em;
+      }
+      .site-header__logo img { width: 40px; height: 40px; object-fit: contain; }
+      .site-header__nav { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 36px); }
+      .site-header__nav a {
+        position: relative; color: rgba(255, 255, 255, .78); text-decoration: none;
+        font-size: .92rem; letter-spacing: .08em; padding: 6px 0; transition: color .25s;
+      }
+      .site-header__nav a:not(.site-header__cta)::after {
+        content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+        background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform .3s;
+      }
+      .site-header__nav a:hover { color: var(--color-primary); }
+      .site-header__nav a.is-active { color: #fff; }
+      .site-header__nav a:hover::after, .site-header__nav a.is-active::after { transform: scaleX(1); }
+      .site-header__nav .site-header__cta {
+        color: var(--color-primary); border: 1px solid var(--color-primary); border-radius: 999px;
+        padding: 8px 22px; transition: background-color .25s, color .25s;
+      }
+      .site-header__nav .site-header__cta:hover { background: var(--color-primary); color: #050508; }
+
+      .site-header__toggle { display: none; width: 40px; height: 40px; padding: 0; background: none; border: 0; flex-direction: column; justify-content: center; align-items: center; gap: 6px; }
+      .site-header__toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform .3s, opacity .3s; }
+      .site-header__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      .site-header__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .site-header__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+      @media (max-width: 860px) {
+        .site-header__logo { font-size: .95rem; }
+        .site-header__toggle { display: flex; }
+        .site-header__nav {
+          position: absolute; top: 100%; left: 0; right: 0;
+          flex-direction: column; align-items: stretch; gap: 0;
+          background: rgba(5, 5, 8, .99); border-bottom: 1px solid rgba(255, 255, 255, .08);
+          padding: 8px clamp(16px, 5vw, 40px) 24px;
+          opacity: 0; visibility: hidden; transform: translateY(-8px);
+          transition: opacity .25s, transform .25s, visibility .25s;
+        }
+        .site-header__nav.is-open { opacity: 1; visibility: visible; transform: none; }
+        .site-header__nav a { padding: 16px 0; font-size: 1rem; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+        .site-header__nav a::after { display: none; }
+        .site-header__nav .site-header__cta { margin-top: 16px; text-align: center; border-bottom: 1px solid var(--color-primary); }
+      }
+    </style>
     <script type="module" crossorigin src="/assets/main-iDtLh5kg.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
   </head>
@@ -90,10 +155,31 @@
     <!-- Overlay Content -->
     <div id="app">
 
+      <!-- Site Header (ナビゲーションバー) -->
+      <header class="site-header" id="site-header">
+        <div class="site-header__inner">
+          <a href="#top" class="site-header__logo" aria-label="ONE PRODUCTION トップへ">
+            <img src="/apple-touch-icon.png" alt="" width="40" height="40">
+            <span>ONE PRODUCTION</span>
+          </a>
+          <nav class="site-header__nav" id="site-nav" aria-label="メインナビゲーション">
+            <a href="#top" data-target="top">ホーム</a>
+            <a href="#strengths" data-target="strengths">強み</a>
+            <a href="#services" data-target="services">サービス</a>
+            <a href="#works" data-target="works">実績</a>
+            <a href="#about" data-target="about">会社概要</a>
+            <a href="#contact" class="site-header__cta">お問い合わせ</a>
+          </nav>
+          <button type="button" class="site-header__toggle" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </header>
+
       <!-- Scrollable Content -->
       <main class="scroll-container">
         <!-- Hero Section -->
-        <section class="section hero">
+        <section class="section hero" id="top">
           <div class="hero-content">
             <h1 class="catchcopy">
               <div class="line-wrapper"><span class="line">システムで、</span></div>
@@ -125,7 +211,7 @@
         </section>
 
         <!-- Strengths Section -->
-        <section class="section feature">
+        <section class="section feature" id="strengths">
           <div class="feature-content full-width">
             <h2 class="section-title text-center">大切にしている<span>3つのこと</span></h2>
             <div class="cards-container">
@@ -149,7 +235,7 @@
         </section>
 
         <!-- Services Section -->
-        <section class="section feature">
+        <section class="section feature" id="services">
           <div class="feature-content">
             <h2 class="section-title"><span>サービス</span>内容</h2>
             <p class="section-text mb-2">「こんなことで困っている」というご相談から、最適な解決策をご提案します。</p>
@@ -221,7 +307,7 @@
         </section>
 
         <!-- About Us Section -->
-        <section class="section feature">
+        <section class="section feature" id="about">
           <div class="feature-content right">
             <h2 class="section-title"><span>ABOUT</span> US</h2>
             <p class="section-text mb-2">
@@ -257,7 +343,7 @@
 
 
         <!-- Contact Section -->
-        <section class="section contact">
+        <section class="section contact" id="contact">
           <div class="contact-content">
             <h2 class="section-title"><span>お気軽</span>にご相談ください</h2>
             <p class="section-text">「こんなことはできる？」「IT化したいが何から始めればいいかわからない」など、<br>どんな些細なことでも構いません。まずはお気軽にお声がけください。</p>
@@ -312,5 +398,38 @@
         </div>
       </footer>
     </div>
+
+  <!-- Site Header behavior (スクロール時の背景・現在地ハイライト・モバイルメニュー) -->
+  <script>
+    (function () {
+      var header = document.getElementById('site-header');
+      var nav = document.getElementById('site-nav');
+      var toggle = header.querySelector('.site-header__toggle');
+      var links = nav.querySelectorAll('a[data-target]');
+      var ids = Array.prototype.map.call(links, function (a) { return a.getAttribute('data-target'); });
+
+      function setMenu(open) {
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+        nav.classList.toggle('is-open', open);
+      }
+      toggle.addEventListener('click', function () { setMenu(toggle.getAttribute('aria-expanded') !== 'true'); });
+      nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+      function onScroll() {
+        header.classList.toggle('is-scrolled', window.scrollY > 40);
+        var line = window.innerHeight * 0.4, current = ids[0];
+        ids.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.getBoundingClientRect().top <= line) current = id;
+        });
+        links.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('data-target') === current); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    })();
+  </script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
