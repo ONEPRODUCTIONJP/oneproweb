@@ -163,6 +163,9 @@
 
       #bg-vignette { background: radial-gradient(ellipse at center, transparent 45%, rgba(2, 2, 4, .75) 100%); }
 
+      /* AI・ニューラルネットワーク風の背景キャンバス */
+      #bg-net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
       /* ヒーローの背景ロゴ */
       .hero-logo {
         position: absolute; z-index: 1; pointer-events: none;
@@ -221,6 +224,7 @@
     <!-- Background FX (光の玉・グリッド・ビネット) -->
     <div id="bg-orbs" aria-hidden="true"><i class="orb orb--a"></i><i class="orb orb--b"></i><i class="orb orb--c"></i></div>
     <div id="bg-grid" aria-hidden="true"></div>
+    <canvas id="bg-net" aria-hidden="true"></canvas>
     <div id="bg-vignette" aria-hidden="true"></div>
 
     <!-- Custom Cursor -->
@@ -477,6 +481,156 @@
         </div>
       </footer>
     </div>
+
+  <!-- AI Network background (ノード・接続線・データ信号) -->
+  <script>
+    (function () {
+      var cv = document.getElementById('bg-net');
+      if (!cv || !cv.getContext) return;
+      var ctx = cv.getContext('2d');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var TOKENS = ['AI', '01', '{ }', '</>', 'λ', 'ML', 'API', 'LLM', '∑', '10'];
+      var W = 0, H = 0, dpr = 1, LINK = 150, MAXP = 16, M = 40;
+      var nodes = [], packets = [], links = [];
+      var mouse = { x: -9999, y: -9999 };
+      var lastY = window.scrollY, energy = 0, raf = 0;
+
+      // 光るノード用スプライト（事前描画）
+      var spr = document.createElement('canvas'); spr.width = spr.height = 64;
+      (function () {
+        var g = spr.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+        gr.addColorStop(0, 'rgba(210,255,140,1)');
+        gr.addColorStop(0.25, 'rgba(123,204,41,.65)');
+        gr.addColorStop(1, 'rgba(123,204,41,0)');
+        g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+      })();
+
+      function mod(a, n) { return ((a % n) + n) % n; }
+
+      function build() {
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        W = window.innerWidth; H = window.innerHeight;
+        cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var small = W < 700;
+        LINK = small ? 105 : 150;
+        MAXP = small ? 8 : 16;
+        var n = Math.round(Math.min(95, Math.max(28, (W * H) / 19000)) * (small ? 0.7 : 1));
+        nodes = [];
+        for (var i = 0; i < n; i++) {
+          var z = 0.35 + Math.random() * 0.65;
+          nodes.push({
+            x: Math.random() * (W + 2 * M) - M, y: Math.random() * (H + 2 * M) - M,
+            vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28,
+            z: z, r: 0.8 + Math.random() * 1.4, ph: Math.random() * 6.28,
+            label: Math.random() < 0.13 ? TOKENS[(Math.random() * TOKENS.length) | 0] : null,
+            px: 0, py: 0
+          });
+        }
+        packets = [];
+      }
+
+      function frame(t) {
+        var sy = window.scrollY, dv = Math.abs(sy - lastY); lastY = sy;
+        energy = Math.min(1, energy * 0.93 + dv * 0.004);
+        var boost = 1 + energy * 3;
+        ctx.clearRect(0, 0, W, H);
+
+        var i, j, a, b, n;
+        for (i = 0; i < nodes.length; i++) {
+          n = nodes[i];
+          n.x += n.vx * boost; n.y += n.vy * boost;
+          if (n.x < -M) n.x = W + M; else if (n.x > W + M) n.x = -M;
+          if (n.y < -M) n.y = H + M; else if (n.y > H + M) n.y = -M;
+          var px = n.x + Math.sin(t * 0.0005 + n.ph) * 10;
+          var py = mod(n.y - sy * 0.18 * n.z, H + 2 * M) - M;   // スクロール視差
+          var dx = px - mouse.x, dy = py - mouse.y, d2 = dx * dx + dy * dy;
+          if (d2 < 28000 && d2 > 1) { var d = Math.sqrt(d2), f = (1 - d / 167) * 22; px += dx / d * f; py += dy / d * f; }
+          n.px = px; n.py = py;
+        }
+
+        // 接続線
+        links.length = 0;
+        ctx.lineWidth = 0.8;
+        var L2 = LINK * LINK;
+        for (i = 0; i < nodes.length; i++) {
+          a = nodes[i];
+          for (j = i + 1; j < nodes.length; j++) {
+            b = nodes[j];
+            var lx = a.px - b.px, ly = a.py - b.py, dd = lx * lx + ly * ly;
+            if (dd < L2) {
+              var al = (1 - Math.sqrt(dd) / LINK) * (0.34 + energy * 0.3);
+              ctx.strokeStyle = 'rgba(123,204,41,' + al.toFixed(3) + ')';
+              ctx.beginPath(); ctx.moveTo(a.px, a.py); ctx.lineTo(b.px, b.py); ctx.stroke();
+              if (links.length < 260) links.push(a, b);
+            }
+          }
+        }
+
+        // マウスとのつながり
+        if (mouse.x > -999) {
+          for (i = 0; i < nodes.length; i++) {
+            n = nodes[i];
+            var mx = n.px - mouse.x, my = n.py - mouse.y, md = Math.sqrt(mx * mx + my * my);
+            if (md < 190) {
+              ctx.strokeStyle = 'rgba(170,240,90,' + ((1 - md / 190) * 0.5).toFixed(3) + ')';
+              ctx.beginPath(); ctx.moveTo(mouse.x, mouse.y); ctx.lineTo(n.px, n.py); ctx.stroke();
+            }
+          }
+        }
+
+        // データ信号（線の上を伝わる光）
+        if (!reduce && packets.length < MAXP && links.length && Math.random() < 0.06 + energy * 0.25) {
+          var k = ((Math.random() * (links.length / 2)) | 0) * 2;
+          packets.push({ a: links[k], b: links[k + 1], t: 0, sp: 0.012 + Math.random() * 0.014 });
+        }
+        for (i = packets.length - 1; i >= 0; i--) {
+          var p = packets[i];
+          p.t += p.sp * boost;
+          if (p.t >= 1) {
+            // 次のノードへ信号を伝播させる
+            var next = null, c = 0;
+            for (j = 0; j < links.length; j += 2) {
+              var o = links[j] === p.b ? links[j + 1] : (links[j + 1] === p.b ? links[j] : null);
+              if (o && o !== p.a && Math.random() < 1 / (++c)) next = o;
+            }
+            if (next && Math.random() < 0.85) { p.a = p.b; p.b = next; p.t = 0; }
+            else { packets.splice(i, 1); continue; }
+          }
+          var gx = p.a.px + (p.b.px - p.a.px) * p.t, gy = p.a.py + (p.b.py - p.a.py) * p.t;
+          ctx.globalAlpha = 0.95; ctx.drawImage(spr, gx - 9, gy - 9, 18, 18);
+          ctx.globalAlpha = 1; ctx.fillStyle = '#eaffc4'; ctx.fillRect(gx - 1, gy - 1, 2, 2);
+        }
+        ctx.globalAlpha = 1;
+
+        // ノード
+        ctx.font = '11px Montserrat, monospace';
+        for (i = 0; i < nodes.length; i++) {
+          n = nodes[i];
+          var pulse = 0.75 + 0.25 * Math.sin(t * 0.002 + n.ph), s = (12 + n.r * 7) * pulse;
+          ctx.globalAlpha = 0.5 + n.z * 0.5;
+          ctx.drawImage(spr, n.px - s / 2, n.py - s / 2, s, s);
+          if (n.label) {
+            ctx.globalAlpha = 0.28 + 0.2 * pulse; ctx.fillStyle = '#b6f26a';
+            ctx.fillText(n.label, n.px + 8, n.py - 6);
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function loop(t) { frame(t); raf = requestAnimationFrame(loop); }
+      function start() { if (!raf && !reduce) raf = requestAnimationFrame(loop); }
+      function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+      build();
+      if (reduce) { frame(0); } else { start(); }
+
+      window.addEventListener('resize', function () { build(); if (reduce) frame(0); });
+      window.addEventListener('mousemove', function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+      document.addEventListener('mouseleave', function () { mouse.x = mouse.y = -9999; });
+      document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+    })();
+  </script>
 
   <!-- Site Header behavior (スクロール時の背景・現在地ハイライト・モバイルメニュー) -->
   <script>
