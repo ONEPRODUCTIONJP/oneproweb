@@ -63,6 +63,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
     <!-- Site Header styles (ナビゲーションバー用) -->
     <style>
       html { scroll-behavior: smooth; }
@@ -192,30 +193,760 @@
       /* フッターのロゴ（背景透過PNG） */
       .footer-logo-img { display: block; width: 150px; height: auto; margin: 0 auto 1rem; filter: drop-shadow(0 0 24px rgba(123, 204, 41, .35)); }
 
-      @media (max-width: 860px) {
-        #bg-grid { background-size: 44px 44px; }
-        .hero-logo { width: 78vw; }
-        .footer-logo-img { width: 120px; }
+      *, *::before, *::after {
+        box-sizing: border-box;
       }
-      @media (prefers-reduced-motion: reduce) {
-        .orb, #bg-grid, .hero-logo img, .hero-logo__ring { animation: none; }
+
+      /* スマホ・タブレット向け最適化スタイル (Mobile Optimization) */
+      @media (max-width: 768px) {
+        /* 余白とセクション高さの調整（スマホで間延び・はみ出しを防ぐ） */
+        .section {
+          min-height: auto;
+          padding: 5rem 1.25rem;
+        }
+        .hero {
+          min-height: 100vh;
+          min-height: calc(var(--vh, 1vh) * 100);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 1.25rem;
+        }
+        .hero-content {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+          padding: 72px 0 3rem;
+          width: 100%;
+        }
+        
+        /* キャッチコピーのフォントサイズと改行調整 */
+        .catchcopy {
+          font-size: clamp(2.1rem, 7.8vw, 3rem);
+          line-height: 1.35;
+          letter-spacing: 0.04em;
+          white-space: normal;
+          word-break: keep-all;
+          overflow-wrap: break-word;
+        }
+        .hero-subcopy {
+          font-size: 0.95rem;
+          line-height: 1.75;
+          margin-top: 1.25rem;
+          padding: 0 0.25rem;
+          word-break: break-word;
+        }
+        .hero-subcopy br {
+          display: inline;
+        }
+
+        /* スクロールインジケーター */
+        .scroll-indicator {
+          bottom: 1.5rem;
+          top: auto;
+        }
+        .scroll-indicator .line-down {
+          height: 48px;
+        }
+
+        /* コンテンツコンテナ */
+        .feature-content {
+          padding: 1.8rem 1.25rem;
+          border-radius: 14px;
+        }
+        .feature-content.right {
+          margin-left: 0;
+        }
+        .section-title {
+          font-size: clamp(1.6rem, 6vw, 2.1rem);
+          line-height: 1.35;
+          margin-bottom: 1.2rem;
+          word-break: break-word;
+        }
+        .section-text {
+          font-size: 0.95rem;
+          line-height: 1.85;
+        }
+
+        /* 3つの強みカード */
+        .cards-container {
+          gap: 1.25rem;
+          margin-top: 2rem;
+        }
+        .card {
+          padding: 1.4rem;
+        }
+        .card-icon {
+          font-size: 2rem;
+          margin-bottom: 0.6rem;
+        }
+        .card-title {
+          font-size: 1.15rem;
+          margin-bottom: 0.75rem;
+        }
+        .card-text {
+          font-size: 0.9rem;
+          line-height: 1.7;
+        }
+
+        /* サービスリスト */
+        .service-list li {
+          padding: 1.25rem 0;
+        }
+        .service-list h4 {
+          font-size: 1.15rem;
+        }
+        .service-list p {
+          font-size: 0.92rem;
+        }
+
+        /* 実績カード */
+        .works-grid {
+          margin-top: 2.2rem;
+          gap: 1.5rem;
+        }
+        .works-info {
+          padding: 1.5rem 1.25rem;
+        }
+        .works-title {
+          font-size: 1.2rem;
+          line-height: 1.45;
+          margin-bottom: 0.8rem;
+        }
+        .works-tags {
+          gap: 0.4rem;
+          margin-bottom: 1rem;
+        }
+        .works-tags .tag {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.65rem;
+        }
+        .works-desc {
+          font-size: 0.88rem;
+          line-height: 1.75;
+        }
+
+        /* 会社概要テーブル（スマホ時はラベルと中身をスッキリ整理） */
+        .about-table th, .about-table td {
+          padding: 0.85rem 0;
+          font-size: 0.92rem;
+          display: block;
+          width: 100%;
+        }
+        .about-table th {
+          padding-bottom: 0.2rem;
+          border-bottom: none;
+          font-size: 0.82rem;
+          opacity: 0.9;
+        }
+        .about-table td {
+          padding-top: 0;
+          margin-bottom: 0.5rem;
+        }
+        .about-table tr {
+          display: block;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* お問い合わせフォーム */
+        .contact-form {
+          margin: 2rem auto 0;
+          padding: 1.5rem 1.25rem;
+          border-radius: 14px;
+        }
+        .form-group {
+          margin-bottom: 1.35rem;
+        }
+        .form-group label {
+          font-size: 0.92rem;
+          margin-bottom: 0.5rem;
+        }
+        /* iOSでの入力時自動ズームを防ぐため16px(1rem)を確保 */
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          font-size: 16px !important;
+          padding: 0.85rem 1rem;
+          border-radius: 8px;
+        }
+        .cta-button {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 1rem 1.5rem;
+          font-size: 1.05rem;
+          letter-spacing: 0.05em;
+        }
+
+        /* フッター */
+        .footer {
+          margin-top: 2rem;
+          padding: 2.5rem 1.25rem 2rem;
+        }
+        .footer-links {
+          gap: 1.2rem;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* スプラッシュアニメーションの文字サイズ */
+        .tech-one {
+          font-size: clamp(3rem, 16vw, 4.5rem);
+        }
+        .tech-production {
+          font-size: clamp(0.75rem, 3.5vw, 1rem);
+          letter-spacing: 0.2em;
+        }
+      }
+
+      /* ========================================================
+         nocoderi模範のUIコンポーネントスタイル（ダーク×ネオングリーン）
+         ======================================================== */
+      /* ヒーロー：バッジ・メリット3大ポイント・2大ボタン */
+      .hero-badge-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+      .hero-pill-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 18px;
+        background: rgba(123, 204, 41, 0.12);
+        border: 1px solid rgba(123, 204, 41, 0.4);
+        border-radius: 999px;
+        color: var(--color-primary);
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        box-shadow: 0 0 15px rgba(123, 204, 41, 0.15);
+      }
+      .hero-features-list {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin: 2rem auto 0;
+        padding: 0;
+        list-style: none;
+        max-width: 820px;
+        flex-wrap: wrap;
+      }
+      .hero-feature-item {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(10, 15, 10, 0.75);
+        border: 1px solid rgba(123, 204, 41, 0.28);
+        border-radius: 999px;
+        padding: 8px 22px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(10px);
+        letter-spacing: 0.02em;
+        transition: border-color .25s, background .25s, transform .25s;
+      }
+      .hero-feature-item:hover {
+        border-color: rgba(123, 204, 41, 0.6);
+        background: rgba(123, 204, 41, 0.12);
+        transform: translateY(-2px);
+      }
+      .hero-feature-item strong {
+        color: var(--color-primary);
+        font-weight: 700;
+        margin-left: 4px;
+      }
+      .hero-cta-group {
+        display: flex;
+        justify-content: center;
+        gap: 1.25rem;
+        margin-top: 2.2rem;
+        flex-wrap: wrap;
+      }
+      .btn-primary-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--color-primary);
+        color: #050508;
+        font-weight: 800;
+        font-size: 1.05rem;
+        padding: 1rem 2.2rem;
+        border-radius: 999px;
+        text-decoration: none;
+        box-shadow: 0 0 25px rgba(123, 204, 41, 0.45);
+        transition: transform .25s, box-shadow .25s, background .25s;
+      }
+      .btn-primary-action:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 35px rgba(123, 204, 41, 0.7);
+        background: #8ae032;
+        color: #000;
+      }
+      .btn-secondary-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 1rem 2rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        text-decoration: none;
+        backdrop-filter: blur(8px);
+        transition: all .25s;
+      }
+      .btn-secondary-action:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        transform: translateY(-2px);
+      }
+
+      /* 信頼ロゴ・無限ループマーキー */
+      .marquee-section {
+        padding: 2.5rem 0;
+        background: rgba(5, 5, 8, 0.75);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+      .marquee-title {
+        text-align: center;
+        font-size: 0.85rem;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 1.5rem;
+        text-transform: uppercase;
+        font-family: Montserrat, sans-serif;
+        font-weight: 700;
+      }
+      .marquee-track {
+        display: flex;
+        gap: 1.5rem;
+        width: max-content;
+        animation: marqueeScroll 42s linear infinite;
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+      .marquee-card {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 20px;
+        background: rgba(20, 25, 20, 0.65);
+        border: 1px solid rgba(123, 204, 41, 0.25);
+        border-radius: 12px;
+        color: #fff;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        transition: transform .25s, border-color .25s, box-shadow .25s;
+        white-space: nowrap;
+      }
+      .marquee-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(123, 204, 41, 0.7);
+        box-shadow: 0 6px 25px rgba(123, 204, 41, 0.25);
+      }
+      .marquee-logo-icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px;
+        flex-shrink: 0;
+      }
+      .marquee-logo-icon img, .marquee-logo-icon svg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .marquee-info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      .marquee-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.25;
+      }
+      .marquee-cat {
+        font-size: 0.72rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        margin-top: 2px;
+      }
+      @keyframes marqueeScroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      /* 選ばれる理由カード：グリッドレイアウトで確実に見切れ・はみ出しを防止 */
+      .cards-container {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 2.5rem !important;
+        box-sizing: border-box !important;
+        align-items: stretch !important;
+      }
+      .cards-container .card {
+        box-sizing: border-box !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 100% !important;
+        overflow: visible !important;
+        background: rgba(10, 15, 10, 0.65);
+        border: 1px solid rgba(123, 204, 41, 0.22);
+        border-radius: 16px;
+        padding: 1.8rem 1.4rem 2rem !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        transition: transform .3s, border-color .3s, box-shadow .3s;
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .cards-container .card:hover {
+        border-color: rgba(123, 204, 41, 0.6);
+        box-shadow: 0 12px 35px rgba(123, 204, 41, 0.15);
+      }
+      .cards-container .card-icon {
+        color: transparent !important;
+        -webkit-text-stroke: 1px var(--color-primary) !important;
+        margin-bottom: 0.6rem !important;
+        font-family: Inter, sans-serif !important;
+        font-size: 2.2rem !important;
+        font-weight: 900 !important;
+        line-height: 1 !important;
+      }
+      .cards-container .card-title {
+        font-size: 1.18rem !important;
+        font-weight: 700 !important;
+        line-height: 1.4 !important;
+        margin-bottom: 0.75rem !important;
+        letter-spacing: 0.03em !important;
+      }
+      .cards-container .card-text {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-size: 0.92rem !important;
+        line-height: 1.75 !important;
+        letter-spacing: 0.02em !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        word-break: break-word !important;
+        flex-grow: 1 !important;
+      }
+      @media (max-width: 960px) {
+        .cards-container {
+          grid-template-columns: 1fr !important;
+          gap: 1.25rem !important;
+        }
+        .cards-container .card {
+          padding: 1.6rem 1.4rem !important;
+        }
+      }
+
+      /* 1分見積り：料金シミュレーション */
+      .simulation-box {
+        background: rgba(10, 15, 10, 0.75);
+        border: 1px solid rgba(123, 204, 41, 0.35);
+        border-radius: 20px;
+        padding: clamp(1.5rem, 4vw, 3rem);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(123, 204, 41, 0.05);
+        margin-top: 2rem;
+      }
+      .sim-step-group {
+        margin-bottom: 2rem;
+      }
+      .sim-step-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .sim-step-badge {
+        background: var(--color-primary);
+        color: #050508;
+        font-size: 0.75rem;
+        font-weight: 800;
+        padding: 2px 7px;
+        border-radius: 4px;
+      }
+      .sim-options-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.75rem;
+      }
+      .sim-opt-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 0.85rem 0.75rem;
+        cursor: pointer;
+        text-align: center;
+        transition: all .2s ease;
+        user-select: none;
+      }
+      .sim-opt-card:hover {
+        background: rgba(123, 204, 41, 0.08);
+        border-color: rgba(123, 204, 41, 0.5);
+      }
+      .sim-opt-card.is-active {
+        background: rgba(123, 204, 41, 0.18);
+        border-color: var(--color-primary);
+        box-shadow: 0 0 15px rgba(123, 204, 41, 0.25);
+      }
+      .sim-opt-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: #fff;
+        margin-top: 4px;
+      }
+      .sim-opt-desc {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 2px;
+      }
+      .sim-result-panel {
+        background: rgba(5, 5, 8, 0.85);
+        border: 1px solid rgba(123, 204, 41, 0.5);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        text-align: center;
+      }
+      .sim-result-item {
+        padding: 0.5rem;
+      }
+      .sim-result-label {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.35rem;
+        letter-spacing: 0.05em;
+      }
+      .sim-result-val {
+        font-size: clamp(1.6rem, 4vw, 2.4rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        font-family: Montserrat, sans-serif;
+      }
+      .sim-result-unit {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-left: 2px;
+        color: #fff;
+      }
+      .sim-cta-wrap {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      /* 開発の流れ（4ステップ） */
+      .flow-steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin-top: 2.5rem;
+      }
+      .flow-step-card {
+        background: rgba(10, 15, 10, 0.6);
+        border: 1px solid rgba(123, 204, 41, 0.2);
+        border-radius: 12px;
+        padding: 1.8rem 1.4rem;
+        position: relative;
+        transition: transform .25s, border-color .25s;
+      }
+      .flow-step-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(123, 204, 41, 0.6);
+      }
+      .flow-step-number {
+        font-family: Montserrat, sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: rgba(123, 204, 41, 0.3);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+      .flow-step-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.6rem;
+      }
+      .flow-step-desc {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      /* FAQ (よくある質問 アコーディオン) */
+      .faq-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2rem;
+        width: 100%;
+      }
+      .faq-item-box {
+        background: rgba(10, 15, 10, 0.6);
+        border: 1px solid rgba(123, 204, 41, 0.25);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: border-color .25s, background .25s;
+      }
+      .faq-item-box[open] {
+        border-color: rgba(123, 204, 41, 0.6);
+        background: rgba(10, 15, 10, 0.85);
+      }
+      .faq-item-header {
+        padding: 1.25rem 1.4rem;
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        list-style: none;
+        gap: 12px;
+      }
+      .faq-item-header::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item-q {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .faq-q-badge {
+        color: var(--color-primary);
+        font-family: Montserrat, sans-serif;
+        font-weight: 900;
+        font-size: 1.2rem;
+      }
+      .faq-chevron {
+        transition: transform .25s;
+        flex-shrink: 0;
+        color: var(--color-primary);
+      }
+      .faq-item-box[open] .faq-chevron {
+        transform: rotate(180deg);
+      }
+      .faq-item-body {
+        padding: 0 1.4rem 1.25rem 3.4rem;
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.85;
+      }
+
+      @media (max-width: 768px) {
+        .hero-features-list {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.6rem;
+        }
+        .hero-feature-item {
+          justify-content: center;
+          font-size: 0.88rem;
+          padding: 7px 14px;
+        }
+        .hero-cta-group {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.75rem;
+        }
+        .sim-result-panel {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        .faq-item-body {
+          padding-left: 1.4rem;
+        }
+      }
+
+      /* スプラッシュアニメーション無効化（即時非表示＆即スクロール可） */
+      #splash-screen {
+        display: none !important;
+      }
+      body {
+        overflow: auto !important;
+      }
+      .catchcopy .line,
+      .hero-subcopy,
+      .scroll-indicator {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      /* 圧迫感の解消：セクションの余白最適化と入れ子枠（二重ボーダー）の解除 */
+      .section {
+        min-height: auto !important;
+        padding: 6rem 5vw !important;
+      }
+      .section.hero {
+        min-height: 100vh !important;
+        min-height: calc(var(--vh, 1vh) * 100) !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px !important;
+        padding-bottom: 3rem !important;
+        box-sizing: border-box;
+      }
+      .feature-content.full-width {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 1080px;
+        margin: 0 auto;
+        width: 100%;
+        overflow: visible !important;
+      }
+      .feature-content.full-width:before {
+        display: none !important;
+      }
+      #strengths,
+      #strengths .feature-content {
+        overflow: visible !important;
+      }
+      .hero-content {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        padding-top: 0 !important;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
       }
     </style>
     <script type="module" crossorigin src="/assets/main-iDtLh5kg.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
   </head>
   <body>
-    <!-- Splash Screen (Boot Sequence) -->
-    <div id="splash-screen">
-      <div id="splash-hardware" class="tech-text-logo">
-        <div class="tech-one">
-          <span class="char">O</span><span class="char">N</span><span class="char">E</span>
-        </div>
-        <div class="tech-production">
-          <span class="char">P</span><span class="char">R</span><span class="char">O</span><span class="char">D</span><span class="char">U</span><span class="char">C</span><span class="char">T</span><span class="char">I</span><span class="char">O</span><span class="char">N</span>
-        </div>
-      </div>
-    </div>
 
     <!-- Modern CSS Background (Replaces WebGL) -->
     <div id="bg-gradient"></div>
@@ -245,7 +976,10 @@
             <a href="#top" data-target="top">ホーム</a>
             <a href="#strengths" data-target="strengths">強み</a>
             <a href="#services" data-target="services">サービス</a>
+            <a href="#simulation" data-target="simulation">料金シミュレーション</a>
+            <a href="#flow" data-target="flow">開発の流れ</a>
             <a href="#works" data-target="works">実績</a>
+            <a href="#faq" data-target="faq">よくある質問</a>
             <a href="#about" data-target="about">会社概要</a>
             <a href="#contact" class="site-header__cta">お問い合わせ</a>
           </nav>
@@ -270,49 +1004,324 @@
               <div class="line-wrapper"><span class="line">ビジネスを加速する。</span></div>
             </h1>
             <p class="hero-subcopy">
-              「ITやシステムは難しそう…」そんな不安を、安心に変えたい。<br>
-              ONE PRODUCTIONは、あなたのビジネスに一番身近なITパートナーとして伴走します。
+              ビジネスに一番身近なITパートナーとして伴走します。
             </p>
-          </div>
-          
-          <div class="scroll-indicator">
-            <span class="text">SCROLL</span>
-            <div class="line-down"></div>
+
+            <!-- 3大メリット -->
+            <ul class="hero-features-list">
+              <li class="hero-feature-item">
+                <span>現場に馴染む<strong>完全オーダーメイド</strong></span>
+              </li>
+              <li class="hero-feature-item">
+                <span>最新技術による<strong>爆速プロトタイプ開発</strong></span>
+              </li>
+              <li class="hero-feature-item">
+                <span>直感操作＆<strong>無駄のないUIデザイン</strong></span>
+              </li>
+            </ul>
+
+            <!-- 2大CTAボタン -->
+            <div class="hero-cta-group">
+              <a href="#simulation" class="btn-primary-action">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+                <span>1分で概算見積り（無料）</span>
+              </a>
+              <a href="#contact" class="btn-secondary-action">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>無料相談してみる</span>
+              </a>
+            </div>
           </div>
         </section>
 
-        <!-- Vision Section -->
-        <section class="section feature">
-          <div class="feature-content right">
-            <h2 class="section-title"><span>テクノロジー</span>を、<br>もっと身近に。</h2>
-            <p class="section-text">
-              「AIや最新技術と言われても、何から始めればいいかわからない」<br>
-              「うちには独自のルールが多くて、市販のシステムでは合わない」<br><br>
-              そんなお悩みを抱える経営者様や店舗オーナー様にこそ、私たちは寄り添いたいと考えています。<br>
-              無理にシステムに合わせるのではなく、今の業務フローや現場で働く人たちを第一に考えた、優しく使いやすいデジタル化を一緒に形にしていきます。
-            </p>
+        <!-- 技術・領域無限ループマーキー（信頼・実績ストリップ） -->
+        <section class="marquee-section" aria-label="対応技術・開発領域">
+          <p class="marquee-title">Supported Technologies & Capabilities</p>
+          <div class="marquee-track">
+            <!-- 1周目 -->
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/chatgpt.svg" alt="ChatGPT" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">ChatGPT / OpenAI</span>
+                <span class="marquee-cat">AI / LLM</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/claude.svg" alt="Claude" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Claude API</span>
+                <span class="marquee-cat">AI / LLM</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/gemini.svg" alt="Google Gemini" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Google Gemini</span>
+                <span class="marquee-cat">AI / Multimodal</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/python.svg" alt="Python" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Python</span>
+                <span class="marquee-cat">Backend / Data / AI</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/swift.svg" alt="Swift" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Swift / iOS</span>
+                <span class="marquee-cat">Mobile App</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/react.svg" alt="React" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">React / Next.js</span>
+                <span class="marquee-cat">Web Application</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/typescript.svg" alt="TypeScript" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">TypeScript</span>
+                <span class="marquee-cat">Reliable Code</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/firebase.svg" alt="Firebase" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Firebase / BaaS</span>
+                <span class="marquee-cat">DB & Auth</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/cloudflare.svg" alt="Cloudflare" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Cloudflare</span>
+                <span class="marquee-cat">High-Speed Edge</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/line.svg" alt="LINE" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">LINE公式連携</span>
+                <span class="marquee-cat">DX Automation</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/figma.svg" alt="Figma" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">ロゴ作成・デザイン</span>
+                <span class="marquee-cat">Figma & Branding</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/video.svg" alt="Video" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">SNS運用・リール動画</span>
+                <span class="marquee-cat">Creative & Marketing</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/speed.svg" alt="Speed" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">最短1週間リリース</span>
+                <span class="marquee-cat">Speed Delivery</span>
+              </div>
+            </div>
+
+            <!-- 2周目（シームレスループ用） -->
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/chatgpt.svg" alt="ChatGPT" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">ChatGPT / OpenAI</span>
+                <span class="marquee-cat">AI / LLM</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/claude.svg" alt="Claude" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Claude API</span>
+                <span class="marquee-cat">AI / LLM</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/gemini.svg" alt="Google Gemini" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Google Gemini</span>
+                <span class="marquee-cat">AI / Multimodal</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/python.svg" alt="Python" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Python</span>
+                <span class="marquee-cat">Backend / Data / AI</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/swift.svg" alt="Swift" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Swift / iOS</span>
+                <span class="marquee-cat">Mobile App</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/react.svg" alt="React" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">React / Next.js</span>
+                <span class="marquee-cat">Web Application</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/typescript.svg" alt="TypeScript" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">TypeScript</span>
+                <span class="marquee-cat">Reliable Code</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/firebase.svg" alt="Firebase" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Firebase / BaaS</span>
+                <span class="marquee-cat">DB & Auth</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/cloudflare.svg" alt="Cloudflare" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">Cloudflare</span>
+                <span class="marquee-cat">High-Speed Edge</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/line.svg" alt="LINE" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">LINE公式連携</span>
+                <span class="marquee-cat">DX Automation</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/figma.svg" alt="Figma" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">ロゴ作成・デザイン</span>
+                <span class="marquee-cat">Figma & Branding</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/video.svg" alt="Video" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">SNS運用・リール動画</span>
+                <span class="marquee-cat">Creative & Marketing</span>
+              </div>
+            </div>
+
+            <div class="marquee-card">
+              <div class="marquee-logo-icon">
+                <img src="/assets/icons/speed.svg" alt="Speed" width="24" height="24" loading="lazy">
+              </div>
+              <div class="marquee-info">
+                <span class="marquee-name">最短1週間リリース</span>
+                <span class="marquee-cat">Speed Delivery</span>
+              </div>
+            </div>
           </div>
         </section>
+
 
         <!-- Strengths Section -->
         <section class="section feature" id="strengths">
           <div class="feature-content full-width">
-            <h2 class="section-title text-center">大切にしている<span>3つのこと</span></h2>
+            <h2 class="section-title text-center">選ばれる<span>理由</span></h2>
             <div class="cards-container">
               <div class="card">
                 <div class="card-icon">01</div>
                 <h3 class="card-title">ぴったり馴染む<br>完全オーダーメイド</h3>
-                <p class="card-text">「システムに業務を合わせる」必要はありません。お客様ごとの独自の仕組みや、長年大切にされてきたルールを丁寧にヒアリングし、現場に100%フィットするプロダクトをゼロからお作りします。</p>
+                <p class="card-text">既存の業務フローや独自ルールを丁寧にヒアリング。<br>現場に100%フィットする専用システムをゼロから構築します。</p>
               </div>
               <div class="card">
                 <div class="card-icon">02</div>
                 <h3 class="card-title">スピーディーで<br>柔軟な開発</h3>
-                <p class="card-text">「早く使ってみたい」「試しながら良くしていきたい」という声にお応えするため、最新技術を用いて素早く形にします。お客様と一緒に画面を確認しながら、柔軟に開発を進めます。</p>
+                <p class="card-text">最新技術を活用し、最短1週間で試せるプロトタイプを提供。<br>実際の画面を触りながら、柔軟にアップデートを重ねられます。</p>
               </div>
               <div class="card">
                 <div class="card-icon">03</div>
                 <h3 class="card-title">迷わない、<br>美しいデザイン</h3>
-                <p class="card-text">毎日使うものだからこそ、ITに不慣れな方でも操作に迷わない直感的な使いやすさと、少しでも業務が楽しくなるような美しいデザインにこだわっています。</p>
+                <p class="card-text">誰でも直感的に操作できるシンプルなUIを追求。<br>マニュアル不要で、毎日の業務を快適にします。</p>
               </div>
             </div>
           </div>
@@ -337,10 +1346,181 @@
                 <p>魅力がしっかりと伝わる、美しいWeb制作</p>
               </li>
               <li>
+                <h4>SNS運用・ショート動画制作</h4>
+                <p>Instagramリール・TikTokの企画から動画作成、投稿・運用代行まで</p>
+              </li>
+              <li>
                 <h4>IT・業務改革サポート</h4>
                 <p>システムを作る前の、業務整理や相談相手として</p>
               </li>
             </ul>
+          </div>
+        </section>
+
+        <!-- Simulation Section (1分見積りシミュレーション) -->
+        <section class="section feature" id="simulation">
+          <div class="feature-content full-width">
+            <h2 class="section-title text-center"><span>1分見積り</span> 料金シミュレーション</h2>
+            <p class="section-text text-center mb-2" style="max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+              ご希望の条件を選択するだけで、概算費用と開発期間の目安をその場ですぐに算出できます。
+            </p>
+
+            <div class="simulation-box">
+              <!-- Q1 利用対象 -->
+              <div class="sim-step-group">
+                <div class="sim-step-title">
+                  <span class="sim-step-badge">STEP 1</span>
+                  <span>利用対象ユーザー</span>
+                </div>
+                <div class="sim-options-grid" data-group="target">
+                  <div class="sim-opt-card is-active" data-val="1.0" data-months="0">
+                    <div class="sim-opt-title">社内業務 / 店舗用</div>
+                    <div class="sim-opt-desc">従業員や特定スタッフ向け</div>
+                  </div>
+                  <div class="sim-opt-card" data-val="1.25" data-months="0.3">
+                    <div class="sim-opt-title">一般ユーザー公開</div>
+                    <div class="sim-opt-desc">不特定多数の顧客向け</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q2 デバイス対応 -->
+              <div class="sim-step-group">
+                <div class="sim-step-title">
+                  <span class="sim-step-badge">STEP 2</span>
+                  <span>対応デバイス</span>
+                </div>
+                <div class="sim-options-grid" data-group="device">
+                  <div class="sim-opt-card" data-val="1.0" data-months="0">
+                    <div class="sim-opt-title">スマホ専用</div>
+                    <div class="sim-opt-desc">現場端末 / モバイル特化</div>
+                  </div>
+                  <div class="sim-opt-card" data-val="1.0" data-months="0">
+                    <div class="sim-opt-title">PC専用</div>
+                    <div class="sim-opt-desc">管理画面 / デスクワーク</div>
+                  </div>
+                  <div class="sim-opt-card is-active" data-val="1.3" data-months="0.4">
+                    <div class="sim-opt-title">PC & スマホ両対応</div>
+                    <div class="sim-opt-desc">レスポンシブ最適化</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q3 開発規模 -->
+              <div class="sim-step-group">
+                <div class="sim-step-title">
+                  <span class="sim-step-badge">STEP 3</span>
+                  <span>想定する規模・画面数</span>
+                </div>
+                <div class="sim-options-grid" data-group="scale">
+                  <div class="sim-opt-card" data-val="30" data-months="0.8">
+                    <div class="sim-opt-title">ミニマム（1〜3画面）</div>
+                    <div class="sim-opt-desc">単一ツール・自動計算など</div>
+                  </div>
+                  <div class="sim-opt-card is-active" data-val="60" data-months="1.5">
+                    <div class="sim-opt-title">スタンダード（4〜8画面）</div>
+                    <div class="sim-opt-desc">業務管理・データベース連携</div>
+                  </div>
+                  <div class="sim-opt-card" data-val="120" data-months="2.5">
+                    <div class="sim-opt-title">フルカスタム（9画面以上）</div>
+                    <div class="sim-opt-desc">複数ロール・大規模連携</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q4 連携・追加機能（複数選択） -->
+              <div class="sim-step-group">
+                <div class="sim-step-title">
+                  <span class="sim-step-badge">STEP 4</span>
+                  <span>追加連携機能（複数選択可）</span>
+                </div>
+                <div class="sim-options-grid" data-group="features">
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="15" data-months="0.2">
+                    <div class="sim-opt-title">LINE公式連携</div>
+                    <div class="sim-opt-desc">通知・自動応答</div>
+                  </div>
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="15" data-months="0.2">
+                    <div class="sim-opt-title">AI / ChatGPT連携</div>
+                    <div class="sim-opt-desc">自動分析・提案</div>
+                  </div>
+                  <div class="sim-opt-card sim-opt-multi" data-val="20" data-months="0.3">
+                    <div class="sim-opt-title">オンライン決済</div>
+                    <div class="sim-opt-desc">Stripe等</div>
+                  </div>
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="10" data-months="0.1">
+                    <div class="sim-opt-title">スプシ・API連携</div>
+                    <div class="sim-opt-desc">外部データ自動同期</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 計算結果 -->
+              <div class="sim-result-panel">
+                <div class="sim-result-item">
+                  <div class="sim-result-label">概算費用（目安）</div>
+                  <div class="sim-result-val">
+                    <span id="sim-price-val">75</span><span class="sim-result-unit">万円〜</span>
+                  </div>
+                </div>
+                <div class="sim-result-item">
+                  <div class="sim-result-label">想定開発期間（目安）</div>
+                  <div class="sim-result-val">
+                    <span id="sim-term-val">約1.5</span><span class="sim-result-unit">ヶ月</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sim-cta-wrap">
+                <a href="#contact" class="btn-primary-action" id="sim-to-contact-btn">
+                  <span>この見積り条件で無料相談する</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem;">
+                  ※上記シミュレーションは目安です。業務内容やご要望に合わせて最適なプランをご提案します。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Development Flow Section (開発の流れ) -->
+        <section class="section feature" id="flow">
+          <div class="feature-content full-width">
+            <h2 class="section-title text-center"><span>開発</span>の流れ</h2>
+            <p class="section-text text-center mb-2" style="max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+              ご相談からリリース、運用保守まで、一貫してスムーズに伴走いたします。
+            </p>
+
+            <div class="flow-steps-grid">
+              <div class="flow-step-card">
+                <div class="flow-step-number">01</div>
+                <div class="flow-step-title">ヒアリング・要件整理</div>
+                <p class="flow-step-desc">
+                  現場の課題や業務フローを伺い、システム化の要件を整理します。
+                </p>
+              </div>
+              <div class="flow-step-card">
+                <div class="flow-step-number">02</div>
+                <div class="flow-step-title">試作プロトタイプ作成</div>
+                <p class="flow-step-desc">
+                  動くプロトタイプ画面を迅速に作成し、完成イメージを共有します。
+                </p>
+              </div>
+              <div class="flow-step-card">
+                <div class="flow-step-number">03</div>
+                <div class="flow-step-title">本開発・テスト運用</div>
+                <p class="flow-step-desc">
+                  最新技術で高速構築。実際の業務フローで試用しながら改善します。
+                </p>
+              </div>
+              <div class="flow-step-card">
+                <div class="flow-step-number">04</div>
+                <div class="flow-step-title">納品・運用サポート</div>
+                <p class="flow-step-desc">
+                  現場への定着支援から、その後の機能追加・改善まで伴走します。
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -349,7 +1529,7 @@
           <div class="feature-content full-width">
             <h2 class="section-title text-center"><span>WORKS</span> 実績</h2>
             <p class="section-text text-center mb-2" style="max-width: 800px; margin: 0 auto; color: rgba(255,255,255,0.7); font-size: 0.95rem;">
-              ※これらは実績の一例です。お客様独自の業務ルールやリクエストに沿った、完全オーダーメイドでのシステム開発を提供しております。
+              現場の業務に特化した、完全オーダーメイドの開発実績です。
             </p>
             
             <div class="works-grid">
@@ -365,7 +1545,7 @@
                     <span class="tag">業務効率化</span>
                   </div>
                   <p class="works-desc">
-                    「1尾の魚から複数のメニューを作る」といった飲食業特有の複雑な在庫管理をシステム化。分かれた在庫状況を入力するだけで必要な発注数を自動計算する仕組みを構築しました。紙ベースの管理と手計算を完全に廃止したことで、<strong>発注ミスをゼロ</strong>にし、<strong>毎日の発注業務時間を75%削減</strong>。印刷コストと人件費の大幅なカットを実現しました。
+                    飲食業特有の複雑な在庫管理と発注数を自動計算。手計算と紙管理をゼロにし、<strong>発注ミスゼロ・毎日の発注業務時間を75%削減</strong>しました。
                   </p>
                 </div>
               </div>
@@ -382,7 +1562,7 @@
                     <span class="tag">自動化</span>
                   </div>
                   <p class="works-desc">
-                    アルバイトからのシフト提出から調整、確定までのフローをLINEとスプレッドシートの連携で完全自動化。スタッフはLINEから簡単にシフトを提出でき、データは自動で同期されます。さらに、店舗の独自ルールに基づき、<strong>AIが人員の削り候補や最適な調整案を自動提案</strong>。シフト管理者の精神的・時間的負担を劇的に軽減し、本来注力すべき店舗運営業務へのリソース確保に貢献しました。
+                    LINEと連携し、シフト提出から確定までを自動化。<strong>AIによる最適シフトの自動提案</strong>で、管理者の作業負担を劇的に削減しました。
                   </p>
                 </div>
               </div>
@@ -424,13 +1604,88 @@
           </div>
         </section>
 
+        <!-- FAQ Section (よくある質問) -->
+        <section class="section feature" id="faq">
+          <div class="feature-content full-width">
+            <h2 class="section-title text-center"><span>よくある</span>ご質問</h2>
+            <p class="section-text text-center mb-2" style="max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.7); font-size: 0.95rem;">
+              ご検討中のお客様からよくいただく質問をまとめました。
+            </p>
 
+            <div class="faq-grid">
+              <details class="faq-item-box" open>
+                <summary class="faq-item-header">
+                  <div class="faq-item-q">
+                    <span class="faq-q-badge">Q</span>
+                    <span>開発の知見が全くないのですが、相談しても大丈夫ですか？</span>
+                  </div>
+                  <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="faq-item-body">
+                  専門知識は一切不要です。現状の業務課題やお困りごとを伺い、最適な進め方を丁寧にご提案いたします。
+                </div>
+              </details>
+
+              <details class="faq-item-box">
+                <summary class="faq-item-header">
+                  <div class="faq-item-q">
+                    <span class="faq-q-badge">Q</span>
+                    <span>市販のSaaSやパッケージ製品と何が違うのですか？</span>
+                  </div>
+                  <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="faq-item-body">
+                  市販ツールと異なり、今ある現場のルールに100%合わせる完全オーダーメイドです。無駄な機能がなく直感的に使えます。
+                </div>
+              </details>
+
+              <details class="faq-item-box">
+                <summary class="faq-item-header">
+                  <div class="faq-item-q">
+                    <span class="faq-q-badge">Q</span>
+                    <span>開発期間と費用の目安はどのくらいですか？</span>
+                  </div>
+                  <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="faq-item-body">
+                  最短1週間〜1ヶ月、30万円〜の規模からスモールスタート可能です。ご予算や納期に合わせて最適なプランをご案内します。
+                </div>
+              </details>
+
+              <details class="faq-item-box">
+                <summary class="faq-item-header">
+                  <div class="faq-item-q">
+                    <span class="faq-q-badge">Q</span>
+                    <span>納品後の運用サポートや追加開発は対応してもらえますか？</span>
+                  </div>
+                  <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="faq-item-body">
+                  リリース後のサーバー保守はもちろん、実際の運用に伴う機能追加や改善まで柔軟にサポートいたします。
+                </div>
+              </details>
+
+              <details class="faq-item-box">
+                <summary class="faq-item-header">
+                  <div class="faq-item-q">
+                    <span class="faq-q-badge">Q</span>
+                    <span>システム開発と合わせてSNS運用や動画（リール）制作も依頼できますか？</span>
+                  </div>
+                  <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="faq-item-body">
+                  はい、喜んで承ります。Instagramリールやショート動画の企画・編集、日々の投稿作成からアカウント運用代行までワンストップで対応可能です。システムやWebサイトと連動させた効果的な集客支援もお任せください。
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
 
         <!-- Contact Section -->
         <section class="section contact" id="contact">
           <div class="contact-content">
             <h2 class="section-title"><span>お気軽</span>にご相談ください</h2>
-            <p class="section-text">「こんなことはできる？」「IT化したいが何から始めればいいかわからない」など、<br>どんな些細なことでも構いません。まずはお気軽にお声がけください。</p>
+            <p class="section-text">ご相談・概算見積りなど、まずはお気軽にお問い合わせください。</p>
             <form class="contact-form" id="contact-form">
               <div class="form-group">
                 <label for="name">お名前 / 会社名 <span class="required">必須</span></label>
@@ -438,7 +1693,7 @@
               </div>
               <div class="form-group">
                 <label for="email">メールアドレス <span class="required">必須</span></label>
-                <input type="email" id="email" name="email" required placeholder="例：info@oneproductionjp.com">
+                <input type="email" id="email" name="email" required placeholder="例：info@oneproduction.com">
               </div>
               <div class="form-group">
                 <label for="subject">ご相談の種類 <span class="required">必須</span></label>
@@ -448,6 +1703,7 @@
                     <option value="app_dev">アプリ・システム開発について</option>
                     <option value="dx">業務効率化・DX推進について</option>
                     <option value="web">LP・Webサイト制作について</option>
+                    <option value="sns_movie">SNS運用・動画（リール等）・投稿作成について</option>
                     <option value="consulting">IT・業務改善のご相談（コンサルティング）</option>
                     <option value="partnership">協業・パートナーシップについて</option>
                     <option value="other">その他</option>
@@ -465,7 +1721,7 @@
               </div>
             </form>
             <div class="contact-fallback">
-              <a href="mailto:oneproductionjp@gmail.com">oneproductionjp@gmail.com</a>
+              <a href="mailto:info@oneproduction.com">info@oneproduction.com</a>
             </div>
           </div>
         </section>
@@ -666,6 +1922,112 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
       onScroll();
+    })();
+  </script>
+
+  <!-- 1分見積り 料金シミュレーション計算スクリプト -->
+  <script>
+    (function () {
+      var priceEl = document.getElementById('sim-price-val');
+      var termEl = document.getElementById('sim-term-val');
+      var ctaBtn = document.getElementById('sim-to-contact-btn');
+      var msgTextarea = document.getElementById('message');
+      var subjectSelect = document.getElementById('subject');
+      if (!priceEl || !termEl) return;
+
+      var state = {
+        target: { factor: 1.0, months: 0, text: '社内業務 / 店舗用' },
+        device: { factor: 1.3, months: 0.4, text: 'PC & スマホ両対応' },
+        scale: { base: 60, months: 1.5, text: 'スタンダード（4〜8画面）' },
+        features: [
+          { val: 15, months: 0.2, text: 'LINE公式連携' },
+          { val: 15, months: 0.2, text: 'AI / ChatGPT連携' },
+          { val: 10, months: 0.1, text: 'スプシ・API連携' }
+        ]
+      };
+
+      function updateCalculation() {
+        var base = state.scale.base;
+        var featTotal = 0;
+        var featMonths = 0;
+        var featTexts = [];
+
+        state.features.forEach(function (f) {
+          featTotal += f.val;
+          featMonths += f.months;
+          featTexts.push(f.text);
+        });
+
+        // 概算費用（万円） = (基本規模 + 追加機能) * 対象係数 * デバイス係数
+        var rawPrice = (base + featTotal) * state.target.factor * (state.device.factor ? state.device.factor : 1.0);
+        var roundedPrice = Math.round(rawPrice / 5) * 5; // 5万円単位で四捨五入
+
+        // 想定開発期間（ヶ月）
+        var rawTerm = state.scale.months + state.target.months + state.device.months + featMonths;
+        var roundedTerm = (Math.round(rawTerm * 2) / 2).toFixed(1); // 0.5ヶ月単位
+
+        priceEl.textContent = roundedPrice;
+        termEl.textContent = '約' + roundedTerm;
+
+        // CTAリンククリック時にフォームに自動入力されるように連携
+        if (ctaBtn && msgTextarea) {
+          ctaBtn.onclick = function () {
+            if (subjectSelect) {
+              subjectSelect.value = 'app_dev';
+            }
+            var summary = '【シミュレーション見積り条件】\n'
+              + '・利用対象：' + state.target.text + '\n'
+              + '・対応機種：' + state.device.text + '\n'
+              + '・開発規模：' + state.scale.text + '\n'
+              + '・追加機能：' + (featTexts.length ? featTexts.join(', ') : 'なし') + '\n'
+              + '・概算目安：' + roundedPrice + '万円〜 / 開発期間 約' + roundedTerm + 'ヶ月\n\n'
+              + '【ご相談内容・ご要望】\n';
+            msgTextarea.value = summary;
+          };
+        }
+      }
+
+      // カードクリックイベント登録
+      document.querySelectorAll('.sim-opt-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var group = card.parentElement.getAttribute('data-group');
+          var title = card.querySelector('.sim-opt-title').textContent.trim();
+          var val = parseFloat(card.getAttribute('data-val')) || 0;
+          var months = parseFloat(card.getAttribute('data-months')) || 0;
+
+          if (card.classList.contains('sim-opt-multi')) {
+            // 複数選択
+            card.classList.toggle('is-active');
+            var selectedFeats = [];
+            card.parentElement.querySelectorAll('.sim-opt-card.is-active').forEach(function (c) {
+              selectedFeats.push({
+                val: parseFloat(c.getAttribute('data-val')) || 0,
+                months: parseFloat(c.getAttribute('data-months')) || 0,
+                text: c.querySelector('.sim-opt-title').textContent.trim()
+              });
+            });
+            state.features = selectedFeats;
+          } else {
+            // 単一選択
+            card.parentElement.querySelectorAll('.sim-opt-card').forEach(function (c) {
+              c.classList.remove('is-active');
+            });
+            card.classList.add('is-active');
+
+            if (group === 'target') {
+              state.target = { factor: val, months: months, text: title };
+            } else if (group === 'device') {
+              state.device = { factor: val, months: months, text: title };
+            } else if (group === 'scale') {
+              state.scale = { base: val, months: months, text: title };
+            }
+          }
+
+          updateCalculation();
+        });
+      });
+
+      updateCalculation();
     })();
   </script>
   </body>
