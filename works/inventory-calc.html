@@ -392,6 +392,7 @@
           <h1 class="case-title">寿司居酒屋向け 業務自動化＆在庫・発注・仕込み自動計算システム</h1>
           <div class="case-tags-wrap">
             <span class="case-tag-pill">寿司居酒屋導入</span>
+            <span class="case-tag-pill">魚1尾→複数メニュー展開計算</span>
             <span class="case-tag-pill">発注自動送信</span>
             <span class="case-tag-pill">解凍指示・仕込みリスト</span>
             <span class="case-tag-pill">端材・歩留まり計算</span>
@@ -400,7 +401,7 @@
             <span class="case-tag-pill">業務伴走サポート</span>
           </div>
           <p class="content-p" style="font-size: 1.1rem; line-height: 1.9;">
-            元々は毎晩すべて「紙と電卓の手書き」で行われていた寿司居酒屋の過酷なバックヤード業務。実際の現場の動きに合わせて業務フローをシステム化し、計算と同期を完全自動化。<strong>在庫入力から業者別発注リスト作成＆自動送信、解凍庫への食材移管指示、納品・仕込みリスト自動生成、端材・歩留まり計算</strong>までを一貫して自動化し、作業履歴の可視化でミスゼロと75%の時間短縮を実現した実例です。
+            元々は毎晩すべて「紙と電卓の手書き」で行われていた寿司居酒屋の過酷なバックヤード業務。実際の現場の動きに合わせて業務フローをシステム化し、<strong>「在庫数入力」から「発注リスト自動作成」「業者へ自動送信」「仕込みリスト自動作成」までを一連で全自動化</strong>。さらに別枠として<strong>魚1尾から複数商品（握り・あて・こぼれ等）への複雑な展開計算</strong>や<strong>「冷凍庫から解凍庫への移管指示」「端材・歩留まり計算」</strong>を搭載し、多発していた計算・発注ミスをゼロに。<strong>1日60分かかっていた作業が15分に短縮され、業務時間を75%削減（月間22.5時間の人件費削減）</strong>に直結した実例です。
           </p>
         </div>
 
@@ -409,12 +410,12 @@
           <div class="metric-card">
             <div class="metric-label">毎日の発注業務時間</div>
             <div class="metric-val">75%削減</div>
-            <div class="metric-sub">手計算・紙伝票ゼロ、発注送信も自動化</div>
+            <div class="metric-sub">1日60分→15分に短縮（月22.5時間の人件費削減）</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">発注・仕込みミス</div>
             <div class="metric-val">ゼロ化</div>
-            <div class="metric-sub">誰が作業したか可視化＆完了バッジで未実施防止</div>
+            <div class="metric-sub">魚展開の自動計算＆完了バッジでミス撲滅</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">食材・従業員の追加</div>
@@ -427,16 +428,22 @@
         <section class="content-section">
           <h2 class="content-h2">導入前の課題：生鮮食材を扱う寿司居酒屋特有の複雑さと過重負担</h2>
           <p class="content-p">
-            寿司居酒屋では、鮮魚の歩留まりや解凍時間、多品目の調味料・乾物・包材など、一般的な飲食チェーンよりも複雑なオペレーションが存在します。
+            寿司居酒屋では、鮮魚の仕込みや解凍、多品目の調味料・乾物・包材など、一般的な飲食チェーンよりも複雑なオペレーションが存在します。
           </p>
           <ul class="feature-points">
             <li class="feature-point-item">
-              <div class="feature-point-title">紙と電卓での毎晩の手書き手計算に膨大な時間</div>
-              <div class="feature-point-desc">棚卸し後の残数から、翌日・週末の想定来客数を踏まえた仕込み量・発注数を電卓で手計算し、複数の仕入れ業者ごとに紙のFAXや連絡用メモを手書き作成していました。</div>
+              <div class="feature-point-title">魚1尾から複数商品（握り・あて・こぼれ等）への展開による在庫・発注計算の複雑化とミス多発</div>
+              <div class="feature-point-desc">
+                寿司居酒屋では、仕入れた魚1尾を「握り寿司」「酒のあて（刺身・一品）」「こぼれ盛り」など複数の異なるメニューに変えて提供します。そのため、現在の各メニューの在庫残数から「魚が何尾必要なのか」を電卓で手計算する作業が極めて複雑で、多忙な閉店後に計算ミスや発注漏れ・過剰発注が多発していました。
+              </div>
             </li>
             <li class="feature-point-item">
-              <div class="feature-point-title">解凍忘れや仕込み量の狂いによる営業トラブル</div>
-              <div class="feature-point-desc">「冷凍庫から解凍庫へ翌日分を移す」作業の指示漏れで看板ネタが提供できなくなったり、端材や歩留まりの計算がブレて食材ロスが発生していました。</div>
+              <div class="feature-point-title">紙と電卓での毎晩の手書き手計算に膨大な時間</div>
+              <div class="feature-point-desc">棚卸し後の残数から仕込み量・発注数を電卓で手計算し、複数の仕入れ業者ごとに紙のFAXや連絡用メモを手書き作成していました。</div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">発注・仕込み・解凍の指示漏れによる営業トラブル</div>
+              <div class="feature-point-desc">食材の発注漏れや「冷凍庫から解凍庫へ翌日分を移す」作業の指示漏れで看板ネタが提供できなくなったり、仕込み量のブレが発生していました。</div>
             </li>
             <li class="feature-point-item">
               <div class="feature-point-title">「誰がどこまでやったか」が見えず、言った言わないのトラブル</div>
@@ -447,48 +454,77 @@
 
         <!-- システムの具体的業務フロー -->
         <section class="content-section">
-          <h2 class="content-h2">自動化された業務フロー：現場の手順をそのままシステム化</h2>
+          <h2 class="content-h2">在庫入力から一気通貫！自動化されたメイン業務フロー</h2>
           <p class="content-p">
-            ONE PRODUCTIONは、店舗の既存フローを壊すことなく「手書きしていた部分をタップ入力に、頭で計算していた部分を自動化」しました。
+            スタッフが当日の実在庫数をスマホで入力するだけで、発注から翌日の仕込み準備までが自動で連動します。
           </p>
           
           <div class="workflow-box">
             <div class="workflow-card">
               <span class="workflow-step">STEP 01</span>
               <div class="workflow-title">在庫数のシンプル入力</div>
-              <div class="workflow-desc">現場を歩きながらスマホで当日在庫数を入力。データはクラウドにリアルタイム同期。</div>
+              <div class="workflow-desc">現場を歩きながらスマホで当日在庫数をタップ入力。データはリアルタイム同期。</div>
             </div>
 
             <div class="workflow-card">
               <span class="workflow-step">STEP 02</span>
-              <div class="workflow-title">発注リスト自動生成＆業者送信</div>
-              <div class="workflow-desc">安全在庫と発注ロットを自動計算し、仕入れ業者ごとに最適化された発注リストを自動送信。</div>
+              <div class="workflow-title">発注リスト自動作成</div>
+              <div class="workflow-desc">安全在庫と発注ロットを自動計算し、仕入れ業者ごとの最適発注リストを即時生成。</div>
             </div>
 
             <div class="workflow-card">
               <span class="workflow-step">STEP 03</span>
-              <div class="workflow-title">冷凍庫から解凍庫への移管指示</div>
-              <div class="workflow-desc">翌日の営業に必要な食材を冷凍庫から解凍庫へ移す具体的な数量指示を自動でリストアップ。</div>
+              <div class="workflow-title">発注業者へ自動送信</div>
+              <div class="workflow-desc">生成された発注リストを担当業者へ自動送信。人為的な連絡ミス・転記漏れをゼロに。</div>
             </div>
 
             <div class="workflow-card">
               <span class="workflow-step">STEP 04</span>
-              <div class="workflow-title">納品＆仕込みリストの自動作成</div>
-              <div class="workflow-desc">翌朝届く納品の検品リストと、仕込み担当者が確認すべき仕込み量を自動生成。</div>
-            </div>
-
-            <div class="workflow-card">
-              <span class="workflow-step">STEP 05</span>
-              <div class="workflow-title">端材・歩留まりの自動計算</div>
-              <div class="workflow-desc">魚の端材利用やロス率を自動で算出・記録し、原価ブレを防止。</div>
-            </div>
-
-            <div class="workflow-card">
-              <span class="workflow-step">STEP 06</span>
-              <div class="workflow-title">完了バッジ＆誤タップ防止</div>
-              <div class="workflow-desc">業務が完了すると「完了バッジ」が表示されボタンが非活性化。二重作業や押し間違いを防止。</div>
+              <div class="workflow-title">仕込みリスト自動作成</div>
+              <div class="workflow-desc">現在の在庫数と必要量から、翌朝仕込み担当者が準備すべき仕込みリストを自動算出。</div>
             </div>
           </div>
+        </section>
+
+        <!-- 別枠：現場を支える専用機能 -->
+        <section class="content-section">
+          <h2 class="content-h2">別枠機能：寿司居酒屋のリアルな現場を支える専用モジュール</h2>
+          <p class="content-p">
+            発注・仕込みの自動連携とは別に、現場で欠かせない重要業務をサポートする個別機能を搭載しています。
+          </p>
+          
+          <ul class="feature-points">
+            <li class="feature-point-item">
+              <div class="feature-point-title">🐟 魚1尾から複数商品（握り・あて・こぼれ等）への自動展開・逆算ロジック</div>
+              <div class="feature-point-desc">
+                魚1尾を「握り寿司」「酒のあて」「こぼれ盛り」など複数商品に使い分ける寿司居酒屋特有の複雑なオペレーションに対応。各メニューの残数から逆算して必要な魚の仕入れ尾数を自動計算するため、これまで多発していた計算ミスや発注漏れを根本から根絶しました。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">🧊 冷凍庫から解凍庫への移管指示（解凍管理）</div>
+              <div class="feature-point-desc">
+                生鮮食材・冷凍ネタを翌日の営業に合わせて冷凍庫から解凍庫へ移す作業を専用画面で指示・確認。解凍忘れによる欠品トラブルを完全に防止します。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">⚖️ 端材・歩留まり計算（原価・ロス管理）</div>
+              <div class="feature-point-desc">
+                鮮魚を捌いた際の可食部重量や端材利用率（まかない・煮付け用など）を計算。原価率のブレや廃棄ロスを正確に数値化します。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">✅ 納品リストの自動作成＆検品</div>
+              <div class="feature-point-desc">
+                発注データをもとに翌日届く食材の納品検品リストを生成。届いた商品の数量チェックをスムーズに行えます。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">🔒 完了バッジ表示＆誤操作防止</div>
+              <div class="feature-point-desc">
+                業務が完了すると「完了バッジ」が表示されボタンが非活性化。二重送信や誤タップを確実に防止します。
+              </div>
+            </li>
+          </ul>
         </section>
 
         <!-- 管理者機能と現場伴走 -->

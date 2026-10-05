@@ -400,21 +400,22 @@
             <span class="case-tag-pill">管理者専用Webアプリ</span>
             <span class="case-tag-pill">LINEカレンダー提出</span>
             <span class="case-tag-pill">採用アラート機能</span>
+            <span class="case-tag-pill">AI削り候補提案・ルール検知</span>
             <span class="case-tag-pill">締切自動通知</span>
             <span class="case-tag-pill">退職データ蓄積</span>
             <span class="case-tag-pill">Google Sheets連携</span>
           </div>
           <p class="content-p" style="font-size: 1.1rem; line-height: 1.9;">
-            スタッフは使い慣れた<strong>お店の公式LINE×カレンダーUI</strong>でサクサク提出。締切前にはLINE通知で提出漏れを未然に防止。管理者は<strong>専用Webアプリ</strong>で提出状況をリアルタイム把握し、店舗独自の計算ロジックによる<strong>「採用アラート（イエロー/レッドゾーン）」</strong>で人材不足を早期察知。退職後もデータが安全に保持される、飲食店のリアルな運用を極めたシフト管理システムです。
+            個人経営の店舗などでは、スタッフから店長へ「◯月◯日の16時から23時まで入れます」とLINEメッセージが送られてくるケースが多く見られます。しかし、メッセージを1つずつExcelやスプレッドシートへ集約・転記する作業は非常に面倒で、転記漏れや時間の写し間違いなどのミスが絶えません。<strong>「ShiftONE」は、まさにこの転記ストレスとミスを根絶するために開発されたアプリ</strong>です。スタッフは使い慣れた<strong>公式LINE×カレンダーUI</strong>でサクサク提出、管理者は<strong>専用Webアプリ</strong>で自動集約。店舗独自の計算ロジックによる<strong>「採用アラート（イエロー/レッド）」</strong>で人員不足も早期察知できます。
           </p>
         </div>
 
         <!-- 成果サマリー -->
         <div class="metrics-grid">
           <div class="metric-card">
-            <div class="metric-label">提出漏れ・催促の手間</div>
-            <div class="metric-val">激減</div>
-            <div class="metric-sub">LINE締切自動メッセージで提出率100%へ</div>
+            <div class="metric-label">集約・転記の手間</div>
+            <div class="metric-val">ゼロへ</div>
+            <div class="metric-sub">LINEから直接Webアプリ・シートへ自動集約</div>
           </div>
           <div class="metric-card">
             <div class="metric-label">人員不足アラート</div>
@@ -430,18 +431,24 @@
 
         <!-- 現場の課題 -->
         <section class="content-section">
-          <h2 class="content-h2">開発背景：市販のシフトアプリでは解決できなかった現場の悩み</h2>
+          <h2 class="content-h2">開発背景：個人経営店・飲食店のリアルな悩み「LINEメッセージの手動転記と転記漏れ」</h2>
           <p class="content-p">
-            飲食店においてシフト作成は単なる時間調整ではありません。「誰が足りないのか」「いつ採用募集をかけるべきか」「急な欠勤にどう対処するか」という店舗経営の根幹です。しかし、既存の市販SaaSでは以下のような壁がありました。
+            個人経営の飲食店や店舗において、店長が頭を抱えているのが<strong>「LINEで送られてくるシフト希望の手動集約作業」</strong>でした。
           </p>
           <ul class="feature-points">
             <li class="feature-point-item">
+              <div class="feature-point-title">「◯月◯日の16時から23時まで入れます」とLINEでバラバラに届く</div>
+              <div class="feature-point-desc">
+                スタッフから店長宛に「◯日16:00〜23:00入れます」「◯日やっぱり遅れます」とメッセージが個別に送られてくるため、店長はその都度Excelやスプレッドシートを開いて手作業で入力・転記。作業が非常に面倒なだけでなく、<strong>「メッセージを見落として転記漏れが発生する」「時間を書き間違えて当日のワンオペや欠員につながる」</strong>といったミスやトラブルの温床になっていました。
+              </div>
+            </li>
+            <li class="feature-point-item">
               <div class="feature-point-title">専用アプリをスタッフがダウンロードしてくれない</div>
-              <div class="feature-point-desc">新しくアプリを入れさせようとしても「容量がない」「パスワードを忘れた」「通知を切っていた」と定着せず、結局店長が個別LINEで催促する二度手間が発生していました。</div>
+              <div class="feature-point-desc">市販のシフト管理アプリを導入しようとしても「新しくアプリを入れたくない」「容量がない」「パスワードを忘れた」とスタッフが定着せず、結局LINEでの連絡に戻ってしまう悪循環に陥っていました。</div>
             </li>
             <li class="feature-point-item">
               <div class="feature-point-title">「今、どの時間帯の人が足りないのか」が直感的に分からない</div>
-              <div class="feature-point-desc">シフトが集まっても、金曜夜や日曜昼などのピーク帯に何人不足しているかの集計に時間がかかり、求人募集を打つタイミングがいつも後手に回っていました。</div>
+              <div class="feature-point-desc">シフトが集まっても、金曜夜や日曜昼などのピーク帯に何人不足しているかの集計に時間がかかり、アルバイト募集を打つタイミングがいつも後手に回っていました。</div>
             </li>
             <li class="feature-point-item">
               <div class="feature-point-title">スタッフの入れ替わり・退職処理の手間とデータの消失</div>
@@ -452,32 +459,38 @@
 
         <!-- ShiftONEの具体的機能と解決策 -->
         <section class="content-section">
-          <h2 class="content-h2">ShiftONEのコア機能：現場が本当に欲しかった仕組み</h2>
+          <h2 class="content-h2">ShiftONEのコア機能：手作業の転記をゼロにし、自動集約・可視化</h2>
           <p class="content-p">
-            ONE PRODUCTIONでは、店長とスタッフ双方の動線を極限までシンプルにし、店舗経営を支える独自機能を実装しました。
+            ONE PRODUCTIONでは、スタッフには「普段のLINEのまま」使ってもらい、店長側の「Excel手動転記と集計」を完全自動化しました。
           </p>
           
           <ul class="feature-points">
             <li class="feature-point-item">
               <div class="feature-point-title">1. スタッフ側：公式LINEから開く「シンプルカレンダーUI」</div>
               <div class="feature-point-desc">
-                お店の公式LINEのリッチメニューをタップするだけ。使い慣れたLINEの中で直感的なカレンダーが開き、希望時間帯をタップして数秒で提出完了。新しいアプリのインストールやログインは一切不要です。
+                お店の公式LINEのリッチメニューからカレンダーをタップして時間を選ぶだけ。「◯日入れます」と文章を手打ちする必要がなく、スタッフにとっても提出が格段にラクになります。
               </div>
             </li>
             <li class="feature-point-item">
-              <div class="feature-point-title">2. 提出忘れを撃退する「LINE締切自動メッセージ」</div>
+              <div class="feature-point-title">2. エクセル・スプレッドシートへの手動転記がゼロに（自動集約）</div>
+              <div class="feature-point-desc">
+                LINEから送信されたシフト希望は、管理者用WebアプリおよびGoogleスプレッドシートへリアルタイムに自動反映。店長がメッセージを見ながら1行ずつ打ち直す作業がなくなり、転記漏れや入力ミスが根本から解消されます。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">3. 提出忘れを撃退する「LINE締切自動メッセージ」</div>
               <div class="feature-point-desc">
                 シフト提出締切の数日前と前日に、未提出者へ向けて公式LINEから自動でリマインド通知を配信。店長が個別に催促メッセージを送るストレスと時間が完全にゼロになりました。
               </div>
             </li>
             <li class="feature-point-item">
-              <div class="feature-point-title">3. 管理者専用Webアプリ：「誰が・いつ・どの時間」をリアルタイム可視化</div>
+              <div class="feature-point-title">4. 管理者専用Webアプリ：「誰が・いつ・どの時間」をリアルタイム可視化</div>
               <div class="feature-point-desc">
                 店長・オーナーはPC・スマホから専用管理画面にアクセス。「誰が提出済みで、誰が未提出か」「誰がどの時間帯を希望しているか」が一目で把握でき、出先からでもシフト状況を監視できます。
               </div>
             </li>
             <li class="feature-point-item">
-              <div class="feature-point-title">4. 採用の手助けになる独自ロジック「採用アラート（イエロー／レッド）」</div>
+              <div class="feature-point-title">5. 採用の手助けになる独自ロジック「採用アラート（イエロー／レッド）」</div>
               <div class="feature-point-desc">
                 店舗ごとの目標必要人数と集まったシフト希望数を自動計算し、人員充足度を判定。募集が必要な枠を色分けアラートで知らせます。
                 <div class="alert-box-ui">
@@ -493,9 +506,15 @@
               </div>
             </li>
             <li class="feature-point-item">
-              <div class="feature-point-title">5. 簡単な退職操作＆過去データの安全蓄積</div>
+              <div class="feature-point-title">6. 簡単な退職操作＆過去データの安全蓄積</div>
               <div class="feature-point-desc">
                 スタッフの卒業や退職時もワンクリックで退職ステータスへ変更可能。退職処理を行っても過去の勤務実績データはデータベースに蓄積され続けるため、繁忙期の傾向分析や過去のシフト照会にも活用できます。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">7. AIシフト調整支援：削り候補の自動提示＆店舗独自ルール検知</div>
+              <div class="feature-point-desc">
+                シフトが集まった後、AIに相談したり「削り候補」ボタンをタップするだけで、店舗ルールに合わせた余剰シフトの削り候補が即座に提示され、1タップで確定反映できます。さらに「週1回以上は必ず出勤する」など店舗独自の勤務ルールが守られていないスタッフがいる場合はAIが自動で検知して教えてくれるため、公平で漏れのないシフト調整をサポートします。
               </div>
             </li>
           </ul>
