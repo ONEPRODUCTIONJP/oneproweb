@@ -85,13 +85,43 @@
     <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
 
     <style>
-      html, body {
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
         overflow-x: hidden;
+        overflow-x: clip;
         max-width: 100vw;
       }
-      body { cursor: auto !important; }
+      body {
+        cursor: auto !important;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-x: clip;
+        max-width: 100vw;
+        background-color: #050508 !important;
+        background-image: 
+          radial-gradient(circle at 15% 15%, rgba(10, 45, 54, 0.75) 0%, transparent 55%),
+          radial-gradient(circle at 85% 40%, rgba(20, 60, 45, 0.75) 0%, transparent 55%),
+          radial-gradient(circle at 25% 70%, rgba(15, 50, 25, 0.65) 0%, transparent 60%),
+          radial-gradient(circle at 80% 92%, rgba(10, 45, 54, 0.65) 0%, transparent 55%) !important;
+        background-attachment: fixed !important;
+        background-size: cover !important;
+      }
       a, button { cursor: pointer !important; }
       img { max-width: 100%; height: auto; }
+      #bg-gradient, #bg-noise {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        z-index: -1 !important;
+        pointer-events: none !important;
+      }
       .footer-logo-img {
         display: block;
         width: 130px;
@@ -107,7 +137,9 @@
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
+        overflow-x: clip;
         width: 100%;
+        max-width: 100vw;
       }
       .site-header {
         position: sticky;
@@ -262,11 +294,21 @@
         background: var(--color-primary);
         border-radius: 2px;
       }
+      .content-lead {
+        font-size: 1.08rem;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 1.5rem;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
       .content-p {
         font-size: 1.02rem;
         line-height: 1.9;
         color: rgba(255, 255, 255, 0.85);
         margin-bottom: 1.5rem;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
 
       .feature-points {
@@ -361,10 +403,19 @@
           padding: 0.28rem 0.75rem;
         }
 
+        .content-lead {
+          font-size: 0.95rem;
+          line-height: 1.85;
+          margin-bottom: 1.2rem;
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
         .content-p {
           font-size: 0.95rem;
           line-height: 1.8;
           margin-bottom: 1.2rem;
+          word-break: break-word;
+          overflow-wrap: anywhere;
         }
 
         /* 成果サマリーカード：1列スタックで見切れ完全防止 */
@@ -494,7 +545,7 @@
             <span class="case-tag-pill">出先スマホ監視</span>
             <span class="case-tag-pill">商品簡単追加</span>
           </div>
-          <p class="content-p" style="font-size: 1.1rem; line-height: 1.9;">
+          <p class="content-lead">
             毎月末の棚卸し作業に何時間もかかり、手作業の棚卸し表と請求書の金額照合に追われていた店舗経営者へ。<strong>店舗の物理動線に合わせて「冷蔵庫」「棚1」「棚2」などのエリアを自由に追加・カスタマイズ</strong>できるエリア別棚卸しを実装。自動計算と同時に<strong>お店の資産推移グラフを自動生成し、届いた請求書と仕入れデータの照合チェック</strong>までをスマホ1台で完結できるシステムです。
           </p>
         </div>
