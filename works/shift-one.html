@@ -97,6 +97,7 @@
       .site-header {
         position: sticky;
         top: 0;
+        z-index: 100;
         background: rgba(5, 5, 8, 0.92);
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
@@ -233,21 +234,25 @@
 
       .content-section { margin-top: 3.5rem; }
       .content-h2 {
-        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-size: clamp(1.35rem, 3vw, 1.8rem);
         font-weight: 800;
         color: #fff;
         margin-bottom: 1.2rem;
         padding-bottom: 0.6rem;
         border-bottom: 1px solid rgba(123, 204, 41, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 10px;
+        position: relative;
+        padding-left: 14px;
+        line-height: 1.45;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
       .content-h2::before {
         content: "";
-        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0.18em;
         width: 4px;
-        height: 1.2em;
+        height: 1em;
         background: var(--color-primary);
         border-radius: 2px;
       }
@@ -357,7 +362,152 @@
         color: #fff; font-weight: 700; padding: 1rem 2rem; border-radius: 999px; text-decoration: none;
       }
       @media (max-width: 768px) {
-        .alert-box-ui { grid-template-columns: 1fr; }
+        .site-header__inner { height: 58px; padding: 0 1rem; }
+        .site-header__logo { font-size: 0.92rem; gap: 8px; }
+        .site-header__logo img { width: 28px; height: 28px; }
+        .site-header__back { font-size: 0.8rem; gap: 4px; }
+
+        .breadcrumb {
+          margin: 1rem auto 0;
+          padding: 0 1rem;
+          font-size: 0.78rem;
+          gap: 6px;
+        }
+
+        .article-container {
+          margin: 1.2rem auto 3.5rem;
+          padding: 0 1rem;
+        }
+
+        .case-header {
+          padding: 1rem 0 1.8rem;
+        }
+        .case-badge {
+          font-size: 0.75rem;
+          padding: 4px 14px;
+          margin-bottom: 0.8rem;
+        }
+        .case-title {
+          font-size: 1.55rem;
+          line-height: 1.35;
+          margin: 0 0 1rem;
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
+        .case-tags-wrap {
+          gap: 0.45rem;
+          margin-bottom: 1.2rem;
+        }
+        .case-tag-pill {
+          font-size: 0.75rem;
+          padding: 0.28rem 0.75rem;
+        }
+
+        .content-p {
+          font-size: 0.95rem;
+          line-height: 1.8;
+          margin-bottom: 1.2rem;
+        }
+
+        /* 成果サマリーカード：1列スタックで見切れ完全防止 */
+        .metrics-grid {
+          grid-template-columns: 1fr;
+          gap: 0.85rem;
+          margin: 1.8rem 0;
+        }
+        .metric-card {
+          padding: 1.2rem 1rem;
+        }
+        .metric-label {
+          font-size: 0.82rem;
+          margin-bottom: 0.3rem;
+        }
+        .metric-val {
+          font-size: 1.9rem;
+        }
+        .metric-sub {
+          font-size: 0.78rem;
+          margin-top: 0.3rem;
+        }
+
+        .content-section {
+          margin-top: 2.5rem;
+        }
+        .content-h2 {
+          font-size: 1.25rem;
+          line-height: 1.45;
+          margin-bottom: 1rem;
+          padding-bottom: 0.5rem;
+          word-break: break-word;
+          overflow-wrap: anywhere;
+        }
+
+        /* 課題・機能リストカード */
+        .feature-points {
+          gap: 0.9rem;
+          margin: 1.2rem 0;
+        }
+        .feature-point-item {
+          padding: 1.15rem 1rem;
+          border-radius: 8px;
+        }
+        .feature-point-title {
+          font-size: 1.02rem;
+          line-height: 1.45;
+          margin-bottom: 0.4rem;
+          word-break: break-word;
+        }
+        .feature-point-desc {
+          font-size: 0.9rem;
+          line-height: 1.7;
+        }
+
+        .alert-box-ui {
+          grid-template-columns: 1fr;
+          gap: 0.8rem;
+          margin: 1rem 0;
+        }
+        .alert-zone {
+          padding: 1rem 0.9rem;
+        }
+
+        .tech-stack-box {
+          padding: 1.2rem 1rem;
+          margin: 1.8rem 0;
+        }
+        .tech-tag {
+          font-size: 0.78rem;
+          padding: 0.35rem 0.65rem;
+        }
+
+        /* CTA */
+        .page-cta-box {
+          padding: 2.2rem 1.2rem;
+          margin-top: 3.5rem;
+          border-radius: 12px;
+        }
+        .page-cta-title {
+          font-size: 1.35rem;
+          line-height: 1.4;
+          margin-bottom: 0.8rem;
+        }
+        .page-cta-text {
+          font-size: 0.9rem;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+        .page-cta-buttons {
+          flex-direction: column;
+          gap: 0.8rem;
+          width: 100%;
+        }
+        .btn-cta-primary, .btn-cta-secondary {
+          width: 100%;
+          justify-content: center;
+          padding: 0.95rem 1.2rem;
+          font-size: 0.95rem;
+          box-sizing: border-box;
+        }
       }
     </style>
   </head>
