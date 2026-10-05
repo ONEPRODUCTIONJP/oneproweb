@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>【事例】AI搭載シフト自動編成システム「ShiftONE」- LINE提出・採用アラート・管理者Webアプリ | ONE PRODUCTION</title>
+    <meta name="description" content="スタッフは公式LINEのカレンダーから迷わずシフト提出。提出締切通知で提出漏れゼロ。管理者はWebアプリで提出状況の可視化、不足時間帯のイエロー/レッド採用アラート、退職スタッフのデータ蓄積まで完備した飲食特化型シフト管理システム「ShiftONE」の開発事例。" />
+    <meta name="keywords" content="飲食店 シフト管理 システム, 店舗 シフト作成 自動化, LINE シフト管理, シフト管理 AI, 採用アラート, ShiftONE, ONE PRODUCTION, 京都 システム開発" />
+    <link rel="canonical" href="https://oneproductionjp.com/works/shift-one.html" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "AI搭載シフト自動編成システム「ShiftONE」開発事例",
+          "description": "スタッフは公式LINEのカレンダーから直感提出。管理者はWebアプリで提出状況や採用アラート（イエロー/レッド）を把握し、AIと連携してシフト作成時間を劇的に削減した実在のシステム開発事例。",
+          "author": {
+            "@type": "Organization",
+            "name": "ONE PRODUCTION",
+            "url": "https://oneproductionjp.com/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "ONE PRODUCTION",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://oneproductionjp.com/favicon.png"
+            }
+          },
+          "datePublished": "2026-07-01",
+          "mainEntityOfPage": "https://oneproductionjp.com/works/shift-one.html"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "ホーム",
+              "item": "https://oneproductionjp.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "開発実績",
+              "item": "https://oneproductionjp.com/#works"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "AI搭載シフト自動編成「ShiftONE」",
+              "item": "https://oneproductionjp.com/works/shift-one.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    
+    <!-- Open Graph / SNS -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://oneproductionjp.com/works/shift-one.html" />
+    <meta property="og:title" content="【事例】AI搭載シフト自動編成システム「ShiftONE」| ONE PRODUCTION" />
+    <meta property="og:description" content="公式LINEからの提出×管理者専用Webアプリ×不足人員の採用アラート。飲食店のシフト管理負担を劇的に解消した開発事例。" />
+    <meta property="og:image" content="https://oneproductionjp.com/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="【事例】AI搭載シフト自動編成システム「ShiftONE」| ONE PRODUCTION" />
+    <meta name="twitter:description" content="LINE提出・採用アラート・管理者Webアプリ完備の飲食特化シフトシステム「ShiftONE」。" />
+    <meta name="twitter:image" content="https://oneproductionjp.com/favicon.png" />
+
+    <!-- Google Fonts & Base CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
+
+    <style>
+      body { cursor: auto !important; }
+      a, button { cursor: pointer !important; }
+      .page-wrap {
+        position: relative;
+        z-index: 10;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        background: rgba(5, 5, 8, 0.92);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .site-header__inner {
+        height: 72px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 3vw, 40px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-header__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        text-decoration: none;
+        font-family: Montserrat, sans-serif;
+        font-weight: 800;
+        font-size: 1.05rem;
+        letter-spacing: .14em;
+      }
+      .site-header__logo img { width: 36px; height: 36px; }
+      .site-header__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+      .site-header__back:hover { color: var(--color-primary); }
+
+      .breadcrumb {
+        max-width: 1000px;
+        margin: 1.5rem auto 0;
+        padding: 0 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; }
+      .breadcrumb a:hover { color: var(--color-primary); }
+      .breadcrumb-sep { opacity: 0.4; }
+      .breadcrumb-current { color: var(--color-primary); }
+
+      .article-container {
+        max-width: 1000px;
+        margin: 2rem auto 5rem;
+        padding: 0 1.5rem;
+        width: 100%;
+        flex: 1;
+      }
+      .case-header {
+        padding: 2.5rem 1rem 3.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .case-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 18px;
+        background: rgba(123, 204, 41, 0.12);
+        border: 1px solid rgba(123, 204, 41, 0.4);
+        border-radius: 999px;
+        color: var(--color-primary);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.2rem;
+      }
+      .case-title {
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1.35;
+        color: #fff;
+        margin: 0 0 1.5rem;
+      }
+      .case-tags-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+      }
+      .case-tag-pill {
+        color: var(--color-primary);
+        background: rgba(123, 204, 41, 0.12);
+        border: 1px solid rgba(123, 204, 41, 0.3);
+        border-radius: 20px;
+        padding: 0.35rem 0.9rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      /* 成果サマリーカード */
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin: 2.5rem 0;
+      }
+      .metric-card {
+        background: linear-gradient(135deg, rgba(20, 30, 20, 0.7), rgba(5, 5, 8, 0.9));
+        border: 1px solid rgba(123, 204, 41, 0.3);
+        border-radius: 12px;
+        padding: 1.8rem;
+        text-align: center;
+      }
+      .metric-label {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.5rem;
+      }
+      .metric-val {
+        font-family: Montserrat, sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1.2;
+      }
+      .metric-sub {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 0.4rem;
+      }
+
+      .content-section { margin-top: 3.5rem; }
+      .content-h2 {
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid rgba(123, 204, 41, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .content-h2::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 1.2em;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+      .content-p {
+        font-size: 1.02rem;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-points {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin: 1.8rem 0;
+      }
+      .feature-point-item {
+        background: rgba(10, 15, 10, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border-left: 4px solid var(--color-primary);
+      }
+      .feature-point-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .feature-point-desc {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      /* アラート解説ボックス */
+      .alert-box-ui {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin: 1.5rem 0;
+      }
+      .alert-zone {
+        padding: 1.2rem;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .alert-zone--yellow {
+        border: 1px solid rgba(255, 204, 0, 0.5);
+      }
+      .alert-zone--yellow strong { color: #ffcc00; }
+      .alert-zone--red {
+        border: 1px solid rgba(255, 77, 77, 0.5);
+      }
+      .alert-zone--red strong { color: #ff4d4d; }
+
+      .tech-stack-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.8rem;
+        margin: 2rem 0;
+      }
+      .tech-stack-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+      }
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .tech-tag {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 6px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        color: #fff;
+      }
+
+      /* CTA */
+      .page-cta-box {
+        text-align: center;
+        background: linear-gradient(135deg, rgba(123, 204, 41, 0.12), rgba(5, 5, 8, 0.9));
+        border: 1px solid rgba(123, 204, 41, 0.4);
+        border-radius: 16px;
+        padding: 3.5rem 2rem;
+        margin-top: 5rem;
+      }
+      .page-cta-title { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+      .page-cta-text { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto 2rem; }
+      .page-cta-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+      .btn-cta-primary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--color-primary); color: #050508; font-weight: 800;
+        padding: 1rem 2.2rem; border-radius: 999px; text-decoration: none;
+        transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 0 25px rgba(123, 204, 41, 0.4);
+      }
+      .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(123, 204, 41, 0.7); }
+      .btn-cta-secondary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff; font-weight: 700; padding: 1rem 2rem; border-radius: 999px; text-decoration: none;
+      }
+      @media (max-width: 768px) {
+        .alert-box-ui { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background FX -->
+    <div id="bg-gradient"></div>
+    <div id="bg-noise"></div>
+
+    <div class="page-wrap">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a href="/" class="site-header__logo">
+            <img src="/apple-touch-icon.png" alt="ONE PRODUCTION" width="36" height="36">
+            <span>ONE PRODUCTION</span>
+          </a>
+          <a href="/#works" class="site-header__back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>実績一覧へ戻る</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- パンくずリスト -->
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">ホーム</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="/#works">実績</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <span class="breadcrumb-current">AI搭載シフト自動編成システム「ShiftONE」</span>
+      </nav>
+
+      <!-- メイン記事コンテナ -->
+      <main class="article-container">
+        <!-- ケースヘッダー -->
+        <div class="case-header">
+          <span class="case-badge">CASE STUDY / 飲食店シフトDX</span>
+          <h1 class="case-title">AI搭載シフト自動編成システム「ShiftONE」</h1>
+          <div class="case-tags-wrap">
+            <span class="case-tag-pill">管理者専用Webアプリ</span>
+            <span class="case-tag-pill">LINEカレンダー提出</span>
+            <span class="case-tag-pill">採用アラート機能</span>
+            <span class="case-tag-pill">締切自動通知</span>
+            <span class="case-tag-pill">退職データ蓄積</span>
+            <span class="case-tag-pill">Google Sheets連携</span>
+          </div>
+          <p class="content-p" style="font-size: 1.1rem; line-height: 1.9;">
+            スタッフは使い慣れた<strong>お店の公式LINE×カレンダーUI</strong>でサクサク提出。締切前にはLINE通知で提出漏れを未然に防止。管理者は<strong>専用Webアプリ</strong>で提出状況をリアルタイム把握し、店舗独自の計算ロジックによる<strong>「採用アラート（イエロー/レッドゾーン）」</strong>で人材不足を早期察知。退職後もデータが安全に保持される、飲食店のリアルな運用を極めたシフト管理システムです。
+          </p>
+        </div>
+
+        <!-- 成果サマリー -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">提出漏れ・催促の手間</div>
+            <div class="metric-val">激減</div>
+            <div class="metric-sub">LINE締切自動メッセージで提出率100%へ</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">人員不足アラート</div>
+            <div class="metric-val">自動検知</div>
+            <div class="metric-sub">イエロー/レッド判定で採用手助け</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">スタッフ側の定着率</div>
+            <div class="metric-val">100%</div>
+            <div class="metric-sub">公式LINE×シンプルカレンダーUIで迷わない</div>
+          </div>
+        </div>
+
+        <!-- 現場の課題 -->
+        <section class="content-section">
+          <h2 class="content-h2">開発背景：市販のシフトアプリでは解決できなかった現場の悩み</h2>
+          <p class="content-p">
+            飲食店においてシフト作成は単なる時間調整ではありません。「誰が足りないのか」「いつ採用募集をかけるべきか」「急な欠勤にどう対処するか」という店舗経営の根幹です。しかし、既存の市販SaaSでは以下のような壁がありました。
+          </p>
+          <ul class="feature-points">
+            <li class="feature-point-item">
+              <div class="feature-point-title">専用アプリをスタッフがダウンロードしてくれない</div>
+              <div class="feature-point-desc">新しくアプリを入れさせようとしても「容量がない」「パスワードを忘れた」「通知を切っていた」と定着せず、結局店長が個別LINEで催促する二度手間が発生していました。</div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">「今、どの時間帯の人が足りないのか」が直感的に分からない</div>
+              <div class="feature-point-desc">シフトが集まっても、金曜夜や日曜昼などのピーク帯に何人不足しているかの集計に時間がかかり、求人募集を打つタイミングがいつも後手に回っていました。</div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">スタッフの入れ替わり・退職処理の手間とデータの消失</div>
+              <div class="feature-point-desc">アルバイトの入れ替わりが激しい中、退職処理をすると過去の勤務データが見られなくなったり、アカウント削除の手続きが煩雑でした。</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ShiftONEの具体的機能と解決策 -->
+        <section class="content-section">
+          <h2 class="content-h2">ShiftONEのコア機能：現場が本当に欲しかった仕組み</h2>
+          <p class="content-p">
+            ONE PRODUCTIONでは、店長とスタッフ双方の動線を極限までシンプルにし、店舗経営を支える独自機能を実装しました。
+          </p>
+          
+          <ul class="feature-points">
+            <li class="feature-point-item">
+              <div class="feature-point-title">1. スタッフ側：公式LINEから開く「シンプルカレンダーUI」</div>
+              <div class="feature-point-desc">
+                お店の公式LINEのリッチメニューをタップするだけ。使い慣れたLINEの中で直感的なカレンダーが開き、希望時間帯をタップして数秒で提出完了。新しいアプリのインストールやログインは一切不要です。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">2. 提出忘れを撃退する「LINE締切自動メッセージ」</div>
+              <div class="feature-point-desc">
+                シフト提出締切の数日前と前日に、未提出者へ向けて公式LINEから自動でリマインド通知を配信。店長が個別に催促メッセージを送るストレスと時間が完全にゼロになりました。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">3. 管理者専用Webアプリ：「誰が・いつ・どの時間」をリアルタイム可視化</div>
+              <div class="feature-point-desc">
+                店長・オーナーはPC・スマホから専用管理画面にアクセス。「誰が提出済みで、誰が未提出か」「誰がどの時間帯を希望しているか」が一目で把握でき、出先からでもシフト状況を監視できます。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">4. 採用の手助けになる独自ロジック「採用アラート（イエロー／レッド）」</div>
+              <div class="feature-point-desc">
+                店舗ごとの目標必要人数と集まったシフト希望数を自動計算し、人員充足度を判定。募集が必要な枠を色分けアラートで知らせます。
+                <div class="alert-box-ui">
+                  <div class="alert-zone alert-zone--yellow">
+                    <strong>⚠️ イエローゾーン（注意アラート）</strong><br>
+                    <span style="font-size:0.88rem; color:rgba(255,255,255,0.75);">「週末ピーク時にあと1〜2名不足の可能性」。既存スタッフへの個別追加打診を促します。</span>
+                  </div>
+                  <div class="alert-zone alert-zone--red">
+                    <strong>🚨 レッドゾーン（緊急採用アラート）</strong><br>
+                    <span style="font-size:0.88rem; color:rgba(255,255,255,0.75);">「特定の曜日・時間帯が構造的に人員不足」。即座にアルバイト求人募集を打つ目安になります。</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">5. 簡単な退職操作＆過去データの安全蓄積</div>
+              <div class="feature-point-desc">
+                スタッフの卒業や退職時もワンクリックで退職ステータスへ変更可能。退職処理を行っても過去の勤務実績データはデータベースに蓄積され続けるため、繁忙期の傾向分析や過去のシフト照会にも活用できます。
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 他システムとの連携 -->
+        <section class="content-section">
+          <h2 class="content-h2">他システム連携：業務チェックリストとの連動</h2>
+          <p class="content-p">
+            ShiftONEは単体で終わらず、ONE PRODUCTIONが提供する「デイリー業務チェックリスト（後述）」とも連携。その日シフトに入っているスタッフの名前と出勤時間が自動同期され、身だしなみチェックや業務報告の担当者入力も自動化されています。
+          </p>
+        </section>
+
+        <!-- 活用技術 -->
+        <section class="content-section">
+          <div class="tech-stack-box">
+            <div class="tech-stack-title">使用技術・プラットフォーム</div>
+            <div class="tech-tags">
+              <span class="tech-tag">LINE Messaging API (公式LINE連携)</span>
+              <span class="tech-tag">LIFF (LINE Front-end Framework)</span>
+              <span class="tech-tag">管理者専用Webアプリケーション</span>
+              <span class="tech-tag">AI最適化・採用アラート算出エンジン</span>
+              <span class="tech-tag">Google Sheets API</span>
+              <span class="tech-tag">TypeScript / React / Cloudflare</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 関連リンク・CTA -->
+        <div class="page-cta-box">
+          <h2 class="page-cta-title">自店専用のシフト管理・LINE連携システムを作りませんか？</h2>
+          <p class="page-cta-text">
+            「LINEからシフトを集めたい」「不足シフトの採用目安を自動計算したい」など、店舗の独自運用に合わせたオーダーメイド開発を承ります。
+          </p>
+          <div class="page-cta-buttons">
+            <a href="/service/store-dx.html" class="btn-cta-secondary">
+              <span>店舗DXサービス詳細を見る</span>
+            </a>
+            <a href="/#contact" class="btn-cta-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>無料相談してみる</span>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <img class="footer-logo-img" src="/logo-full.png" alt="ONE PRODUCTION" width="432" height="512" loading="lazy">
+          <div class="footer-links">
+            <a href="/" class="footer-link">ホーム</a>
+            <a href="/service/store-dx.html" class="footer-link">店舗・飲食店DX</a>
+            <a href="/works/shift-one.html" class="footer-link">事例：ShiftONE</a>
+            <a href="/works/inventory-calc.html" class="footer-link">事例：在庫自動計算</a>
+            <a href="/works/store-checklist.html" class="footer-link">事例：業務チェックリスト</a>
+            <a href="/works/store-finance.html" class="footer-link">事例：お店の家計簿</a>
+            <a href="/privacy.html" class="footer-link">プライバシーポリシー</a>
+          </div>
+          <p class="copyright">&copy; 2026 ONE PRODUCTION. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

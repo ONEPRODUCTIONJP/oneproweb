@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>【事例】店舗資産管理＆エリア別デジタル棚卸し・請求書照合システム「お店の家計簿」| ONE PRODUCTION</title>
+    <meta name="description" content="店舗ごとの棚卸しをエリア別（冷蔵庫・棚1・棚2等）に自由カスタマイズし高速化・自動計算。店舗の資産推移グラフの可視化、請求書と仕入れデータの照合チェック、出先からのスマホ確認まで実現した店舗経営DXシステム「お店の家計簿」の開発事例。" />
+    <meta name="keywords" content="店舗 棚卸し アプリ, 飲食店 棚卸し 自動計算, 飲食店 請求書 チェック, 店舗 資産推移 グラフ, お店の家計簿, 原価管理 システム, ONE PRODUCTION, 京都 システム開発" />
+    <link rel="canonical" href="https://oneproductionjp.com/works/store-finance.html" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "店舗資産管理＆エリア別デジタル棚卸し・請求書照合システム「お店の家計簿」開発事例",
+          "description": "店舗ごとの棚卸しをエリア別（冷蔵庫、棚1、棚2等）に分割し劇的スピード化。資産推移グラフや請求書照合により、店長・オーナーがスマホで正確な経営状況を把握できる実在のDXシステム開発実績。",
+          "author": {
+            "@type": "Organization",
+            "name": "ONE PRODUCTION",
+            "url": "https://oneproductionjp.com/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "ONE PRODUCTION",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://oneproductionjp.com/favicon.png"
+            }
+          },
+          "datePublished": "2026-07-01",
+          "mainEntityOfPage": "https://oneproductionjp.com/works/store-finance.html"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "ホーム",
+              "item": "https://oneproductionjp.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "開発実績",
+              "item": "https://oneproductionjp.com/#works"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "店舗棚卸し＆資産推移「お店の家計簿」",
+              "item": "https://oneproductionjp.com/works/store-finance.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+    
+    <!-- Open Graph / SNS -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://oneproductionjp.com/works/store-finance.html" />
+    <meta property="og:title" content="【事例】店舗資産管理＆デジタル棚卸し・請求書照合システム「お店の家計簿」| ONE PRODUCTION" />
+    <meta property="og:description" content="エリア別棚卸しで作業時間を激減。資産推移グラフと請求書照合で、店長・オーナーが出先から経営状況を把握。" />
+    <meta property="og:image" content="https://oneproductionjp.com/favicon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="【事例】店舗棚卸し＆資産推移システム「お店の家計簿」| ONE PRODUCTION" />
+    <meta name="twitter:description" content="エリア別棚卸し・資産推移グラフ・請求書照合完備の店舗経営DXシステム。" />
+    <meta name="twitter:image" content="https://oneproductionjp.com/favicon.png" />
+
+    <!-- Google Fonts & Base CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" crossorigin href="/assets/style-BzxxPbFs.css">
+
+    <style>
+      body { cursor: auto !important; }
+      a, button { cursor: pointer !important; }
+      .page-wrap {
+        position: relative;
+        z-index: 10;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        background: rgba(5, 5, 8, 0.92);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .site-header__inner {
+        height: 72px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 clamp(16px, 3vw, 40px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-header__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        text-decoration: none;
+        font-family: Montserrat, sans-serif;
+        font-weight: 800;
+        font-size: 1.05rem;
+        letter-spacing: .14em;
+      }
+      .site-header__logo img { width: 36px; height: 36px; }
+      .site-header__back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+      .site-header__back:hover { color: var(--color-primary); }
+
+      .breadcrumb {
+        max-width: 1000px;
+        margin: 1.5rem auto 0;
+        padding: 0 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.2s; }
+      .breadcrumb a:hover { color: var(--color-primary); }
+      .breadcrumb-sep { opacity: 0.4; }
+      .breadcrumb-current { color: var(--color-primary); }
+
+      .article-container {
+        max-width: 1000px;
+        margin: 2rem auto 5rem;
+        padding: 0 1.5rem;
+        width: 100%;
+        flex: 1;
+      }
+      .case-header {
+        padding: 2.5rem 1rem 3.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .case-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 18px;
+        background: rgba(123, 204, 41, 0.12);
+        border: 1px solid rgba(123, 204, 41, 0.4);
+        border-radius: 999px;
+        color: var(--color-primary);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.2rem;
+      }
+      .case-title {
+        font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+        font-weight: 900;
+        line-height: 1.35;
+        color: #fff;
+        margin: 0 0 1.5rem;
+      }
+      .case-tags-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+      }
+      .case-tag-pill {
+        color: var(--color-primary);
+        background: rgba(123, 204, 41, 0.12);
+        border: 1px solid rgba(123, 204, 41, 0.3);
+        border-radius: 20px;
+        padding: 0.35rem 0.9rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+        margin: 2.5rem 0;
+      }
+      .metric-card {
+        background: linear-gradient(135deg, rgba(20, 30, 20, 0.7), rgba(5, 5, 8, 0.9));
+        border: 1px solid rgba(123, 204, 41, 0.3);
+        border-radius: 12px;
+        padding: 1.8rem;
+        text-align: center;
+      }
+      .metric-label { font-size: 0.88rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 0.5rem; }
+      .metric-val {
+        font-family: Montserrat, sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1.2;
+      }
+      .metric-sub { font-size: 0.82rem; color: rgba(255, 255, 255, 0.5); margin-top: 0.4rem; }
+
+      .content-section { margin-top: 3.5rem; }
+      .content-h2 {
+        font-size: clamp(1.4rem, 3vw, 1.8rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 1.2rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid rgba(123, 204, 41, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .content-h2::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 1.2em;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+      .content-p {
+        font-size: 1.02rem;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-points {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        margin: 1.8rem 0;
+      }
+      .feature-point-item {
+        background: rgba(10, 15, 10, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        border-left: 4px solid var(--color-primary);
+      }
+      .feature-point-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+      .feature-point-desc {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .page-cta-box {
+        text-align: center;
+        background: linear-gradient(135deg, rgba(123, 204, 41, 0.12), rgba(5, 5, 8, 0.9));
+        border: 1px solid rgba(123, 204, 41, 0.4);
+        border-radius: 16px;
+        padding: 3.5rem 2rem;
+        margin-top: 5rem;
+      }
+      .page-cta-title { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+      .page-cta-text { font-size: 1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto 2rem; }
+      .page-cta-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+      .btn-cta-primary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--color-primary); color: #050508; font-weight: 800;
+        padding: 1rem 2.2rem; border-radius: 999px; text-decoration: none;
+        transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 0 25px rgba(123, 204, 41, 0.4);
+      }
+      .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(123, 204, 41, 0.7); }
+      .btn-cta-secondary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.25);
+        color: #fff; font-weight: 700; padding: 1rem 2rem; border-radius: 999px; text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background FX -->
+    <div id="bg-gradient"></div>
+    <div id="bg-noise"></div>
+
+    <div class="page-wrap">
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a href="/" class="site-header__logo">
+            <img src="/apple-touch-icon.png" alt="ONE PRODUCTION" width="36" height="36">
+            <span>ONE PRODUCTION</span>
+          </a>
+          <a href="/#works" class="site-header__back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>実績一覧へ戻る</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- パンくずリスト -->
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="/">ホーム</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <a href="/#works">実績</a>
+        <span class="breadcrumb-sep">&gt;</span>
+        <span class="breadcrumb-current">店舗棚卸し＆資産推移「お店の家計簿」</span>
+      </nav>
+
+      <!-- メイン記事コンテナ -->
+      <main class="article-container">
+        <!-- ケースヘッダー -->
+        <div class="case-header">
+          <span class="case-badge">CASE STUDY / 店舗資産管理DX</span>
+          <h1 class="case-title">店舗資産管理＆エリア別デジタル棚卸し・請求書照合「お店の家計簿」</h1>
+          <div class="case-tags-wrap">
+            <span class="case-tag-pill">エリア別棚卸し（冷蔵庫・棚等）</span>
+            <span class="case-tag-pill">資産推移グラフ可視化</span>
+            <span class="case-tag-pill">請求書×仕入れ照合</span>
+            <span class="case-tag-pill">棚卸し大幅高速化</span>
+            <span class="case-tag-pill">出先スマホ監視</span>
+            <span class="case-tag-pill">商品簡単追加</span>
+          </div>
+          <p class="content-p" style="font-size: 1.1rem; line-height: 1.9;">
+            毎月末の棚卸し作業に何時間もかかり、手作業の棚卸し表と請求書の金額照合に追われていた店舗経営者へ。<strong>店舗の物理動線に合わせて「冷蔵庫」「棚1」「棚2」などのエリアを自由に追加・カスタマイズ</strong>できるエリア別棚卸しを実装。自動計算と同時に<strong>お店の資産推移グラフを自動生成し、届いた請求書と仕入れデータの照合チェック</strong>までをスマホ1台で完結できるシステムです。
+          </p>
+        </div>
+
+        <!-- 成果サマリー -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">棚卸し作業時間</div>
+            <div class="metric-val">格段に短縮</div>
+            <div class="metric-sub">冷蔵庫や棚ごとのエリア順入力で動線ロスゼロ</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">資産・在庫推移</div>
+            <div class="metric-val">自動グラフ化</div>
+            <div class="metric-sub">月末の在庫金額推移が一目で把握可能に</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">請求書との照合</div>
+            <div class="metric-val">ミスゼロ化</div>
+            <div class="metric-sub">仕入れ実データと請求書金額をデジタル突合</div>
+          </div>
+        </div>
+
+        <!-- 導入前の課題 -->
+        <section class="content-section">
+          <h2 class="content-h2">導入前の課題：月末の膨大な棚卸し残業と、不明瞭な在庫資産</h2>
+          <p class="content-p">
+            店舗ビジネスにおいて「在庫＝会社の現金（資産）」です。しかし現場では以下のような深刻な課題がありました。
+          </p>
+          <ul class="feature-points">
+            <li class="feature-point-item">
+              <div class="feature-point-title">棚卸し用紙の並び順と実際の厨房の配置が合っていない</div>
+              <div class="feature-point-desc">五十音順や業者順に並んだ紙の棚卸し表を持って冷蔵庫と倉庫を行ったり来たりし、毎月深夜まで膨大なカウント時間がかかっていました。</div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">納品書・請求書と実在庫の突き合わせが手作業</div>
+              <div class="feature-point-desc">業者から届く請求書の明細と実際の納品数・価格にズレがないかの確認が電卓手作業で、誤請求の見落としリスクがありました。</div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">店舗ごとの資産推移がリアルタイムに見えない</div>
+              <div class="feature-point-desc">在庫金額が先月と比べて増えているのか減っているのかが税理士の月次決算まで分からず、過剰在庫による資金繰りの悪化に気づきにくい状態でした。</div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- お店の家計簿のコア機能 -->
+        <section class="content-section">
+          <h2 class="content-h2">「お店の家計簿」の特長と機能</h2>
+          <p class="content-p">
+            店舗オーナーと現場スタッフのストレスを解消するため、直感的なUIと強力なデータ連携を備えています。
+          </p>
+          
+          <ul class="feature-points">
+            <li class="feature-point-item">
+              <div class="feature-point-title">1. エリア別棚卸し：動線に合わせて「冷蔵庫」「棚1」「棚2」を自由設定</div>
+              <div class="feature-point-desc">
+                管理画面から「ウォークイン冷蔵庫」「カウンター下」「バックヤード棚A」といったエリアを自由に追加・削除・並び替え可能。実際の店舗の歩行ルート通りに画面が並ぶため、棚卸しが格段にスピーディーになります。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">2. お店の資産推移グラフが自動生成</div>
+              <div class="feature-point-desc">
+                棚卸しが完了すると、自動で在庫総額が計算され、月別・推移別の資産グラフが生成されます。「先月より在庫を抱えすぎていないか」「適正な資産額で運営できているか」が一目で分かります。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">3. 請求書チェック機能（仕入れデータ照合）</div>
+              <div class="feature-point-desc">
+                仕入れ先業者から送られてくる請求書をチェックし、毎日の仕入れ・納品履歴とワンストップで照合。単価の間違いや品目漏れをデジタルで確実に防ぎます。
+              </div>
+            </li>
+            <li class="feature-point-item">
+              <div class="feature-point-title">4. 管理ボタンで新しい商品を簡単追加＆出先スマホ確認</div>
+              <div class="feature-point-desc">
+                新商品や季節食材もワンタップで簡単追加。店長やオーナーは外出先からでもスマホで現在の在庫資産状況や棚卸し結果をいつでも確認できます。
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 関連リンク・CTA -->
+        <div class="page-cta-box">
+          <h2 class="page-cta-title">棚卸し・在庫資産管理をデジタル化しませんか？</h2>
+          <p class="page-cta-text">
+            「棚卸し時間を半分にしたい」「請求書照合を手間なく終わらせたい」という店舗オーナー様、ぜひお気軽にご相談ください。
+          </p>
+          <div class="page-cta-buttons">
+            <a href="/service/store-dx.html" class="btn-cta-secondary">
+              <span>店舗DXサービス詳細を見る</span>
+            </a>
+            <a href="/#contact" class="btn-cta-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span>無料相談してみる</span>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <img class="footer-logo-img" src="/logo-full.png" alt="ONE PRODUCTION" width="432" height="512" loading="lazy">
+          <div class="footer-links">
+            <a href="/" class="footer-link">ホーム</a>
+            <a href="/service/store-dx.html" class="footer-link">店舗・飲食店DX</a>
+            <a href="/works/shift-one.html" class="footer-link">事例：ShiftONE</a>
+            <a href="/works/inventory-calc.html" class="footer-link">事例：在庫自動計算</a>
+            <a href="/works/store-checklist.html" class="footer-link">事例：業務チェックリスト</a>
+            <a href="/works/store-finance.html" class="footer-link">事例：お店の家計簿</a>
+            <a href="/privacy.html" class="footer-link">プライバシーポリシー</a>
+          </div>
+          <p class="copyright">&copy; 2026 ONE PRODUCTION. All Rights Reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
