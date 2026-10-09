@@ -1556,11 +1556,11 @@
                     <div class="sim-opt-title">ミニマム（1〜3画面）</div>
                     <div class="sim-opt-desc">単一ツール・自動計算など</div>
                   </div>
-                  <div class="sim-opt-card is-active" data-val="40" data-months="0.7">
+                  <div class="sim-opt-card is-active" data-val="30" data-months="0.7">
                     <div class="sim-opt-title">スタンダード（4〜8画面）</div>
                     <div class="sim-opt-desc">業務管理・データベース連携</div>
                   </div>
-                  <div class="sim-opt-card" data-val="80" data-months="1.2">
+                  <div class="sim-opt-card" data-val="60" data-months="1.2">
                     <div class="sim-opt-title">フルカスタム（9画面以上）</div>
                     <div class="sim-opt-desc">複数ロール・大規模連携</div>
                   </div>
@@ -1574,19 +1574,19 @@
                   <span>追加連携機能（複数選択可）</span>
                 </div>
                 <div class="sim-options-grid" data-group="features">
-                  <div class="sim-opt-card sim-opt-multi is-active" data-val="8" data-months="0.1">
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="5" data-months="0.1">
                     <div class="sim-opt-title">LINE公式連携</div>
                     <div class="sim-opt-desc">通知・自動応答</div>
                   </div>
-                  <div class="sim-opt-card sim-opt-multi is-active" data-val="8" data-months="0.1">
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="5" data-months="0.1">
                     <div class="sim-opt-title">AI / ChatGPT連携</div>
                     <div class="sim-opt-desc">自動分析・提案</div>
                   </div>
-                  <div class="sim-opt-card sim-opt-multi" data-val="10" data-months="0.2">
+                  <div class="sim-opt-card sim-opt-multi" data-val="6" data-months="0.2">
                     <div class="sim-opt-title">オンライン決済</div>
                     <div class="sim-opt-desc">Stripe等</div>
                   </div>
-                  <div class="sim-opt-card sim-opt-multi is-active" data-val="5" data-months="0.1">
+                  <div class="sim-opt-card sim-opt-multi is-active" data-val="3" data-months="0.1">
                     <div class="sim-opt-title">スプシ・API連携</div>
                     <div class="sim-opt-desc">外部データ自動同期</div>
                   </div>
@@ -1598,7 +1598,7 @@
                 <div class="sim-result-item">
                   <div class="sim-result-label">概算費用（目安）</div>
                   <div class="sim-result-val">
-                    <span id="sim-price-val">70</span><span class="sim-result-unit">万円〜</span>
+                    <span id="sim-price-val">50</span><span class="sim-result-unit">万円〜</span>
                   </div>
                 </div>
                 <div class="sim-result-item">
@@ -1614,7 +1614,8 @@
                   <span>この見積り条件で無料相談する</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
                 </a>
-                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem;">
+                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.8rem; line-height: 1.6;">
+                  ※月額費用別途<br>
                   ※上記シミュレーションは目安です。業務内容やご要望に合わせて最適なプランをご提案します。
                 </p>
               </div>
@@ -1856,7 +1857,7 @@
                   <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
                 <div class="faq-item-body">
-                  リリース後のサーバー保守はもちろん、実際の運用に伴う機能追加や改善まで柔軟にサポートいたします。
+                  はい、対応可能です。リリース後のサーバー保守・死活監視から、実際の運用に伴う機能追加や改善まで、月額の運用保守プランにて柔軟にサポートいたします。
                 </div>
               </details>
 
@@ -2139,11 +2140,11 @@
       var state = {
         target: { factor: 1.0, months: 0, text: '社内業務 / 店舗用' },
         device: { factor: 1.15, months: 0.1, text: 'PC & スマホ両対応' },
-        scale: { base: 40, months: 0.7, text: 'スタンダード（4〜8画面）' },
+        scale: { base: 30, months: 0.7, text: 'スタンダード（4〜8画面）' },
         features: [
-          { val: 8, months: 0.1, text: 'LINE公式連携' },
-          { val: 8, months: 0.1, text: 'AI / ChatGPT連携' },
-          { val: 5, months: 0.1, text: 'スプシ・API連携' }
+          { val: 5, months: 0.1, text: 'LINE公式連携' },
+          { val: 5, months: 0.1, text: 'AI / ChatGPT連携' },
+          { val: 3, months: 0.1, text: 'スプシ・API連携' }
         ]
       };
 
@@ -2181,7 +2182,7 @@
               + '・対応機種：' + state.device.text + '\n'
               + '・開発規模：' + state.scale.text + '\n'
               + '・追加機能：' + (featTexts.length ? featTexts.join(', ') : 'なし') + '\n'
-              + '・概算目安：' + roundedPrice + '万円〜 / 開発期間 約' + roundedTerm + 'ヶ月\n\n'
+              + '・概算目安：' + roundedPrice + '万円〜（初期開発費用 / 月額運用費別途） / 開発期間 約' + roundedTerm + 'ヶ月\n\n'
               + '【ご相談内容・ご要望】\n';
             msgTextarea.value = summary;
           };
